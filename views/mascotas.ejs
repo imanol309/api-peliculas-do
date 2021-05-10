@@ -1,0 +1,29 @@
+<%- include('template/cabecera',{titleWeb:`Mascotas`})%>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">color</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (arrayMascotas.length > 0) { %>
+        <% arrayMascotas.forEach(mascotas => { %>
+            <tr>
+                <th scope="row"><%= mascotas.id %> </th>
+                <td><%= mascotas.nombre %> </td>
+                <td><%= mascotas.edad %> </td>
+                <td><%= mascotas.colores %> </td>
+                <td>@mdo</td>
+            </tr>
+        <% }) %>
+        <% } %>
+    </tbody>
+</table>
+</body>
+
+</html>

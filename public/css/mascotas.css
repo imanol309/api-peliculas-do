@@ -1,0 +1,11 @@
+.table{
+    width: 100%;
+    background-color: darkgoldenrod;
+    height: 20vh;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-top: 15%;
+}

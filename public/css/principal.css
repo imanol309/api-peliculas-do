@@ -1,0 +1,12 @@
+.temas-principal{
+    padding: 5%;
+    color: rgb(255, 183, 0);
+    background: darkmagenta;
+    font-size: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.subtema{ 
+    margin-top: 5%;
+}
