@@ -1,4 +1,6 @@
 .temas-principal{
+    position: relative;
+    top: 80px;
     padding: 5%;
     color: rgb(255, 183, 0);
     background: darkmagenta;

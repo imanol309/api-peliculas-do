@@ -3,27 +3,31 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">color</th>
-            <th scope="col">Handle</th>
+            <th class="col" scope="col">Codigo</th>
+            <th class="col" scope="col">Nombre</th>
+            <th class="col" scope="col">edad</th>
+            <th class="col" scope="col">color</th>
+            <th class="col" scope="col">Handle</th>
         </tr>
     </thead>
     <tbody>
         <% if (arrayMascotas.length > 0) { %>
         <% arrayMascotas.forEach(mascotas => { %>
-            <tr>
-                <th scope="row"><%= mascotas.id %> </th>
-                <td><%= mascotas.nombre %> </td>
-                <td><%= mascotas.edad %> </td>
-                <td><%= mascotas.colores %> </td>
-                <td>@mdo</td>
-            </tr>
+        <tr>
+            <th class="infor" scope="row"><%= mascotas.id %> </th>
+            <td class="infor"><%= mascotas.nombre %> </td>
+            <td class="infor"><%= mascotas.edad %> </td>
+            <td class="infor"><%= mascotas.color %> </td>
+            <td class="infor">@mdo</td>
+        </tr>
         <% }) %>
         <% } %>
     </tbody>
 </table>
+
+<button class="button">
+    <a class="button-enviar" href="/crear">Crear una nueva mascota</a>
+</button>
 </body>
 
 </html>

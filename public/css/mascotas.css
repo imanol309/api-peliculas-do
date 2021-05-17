@@ -1,11 +1,37 @@
 .table{
-    width: 100%;
-    background-color: darkgoldenrod;
+    position: relative;
+    width: 90%;
     height: 20vh;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     font-size: 30px;
+    bottom: 90px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     margin-top: 15%;
+}
+
+.col{
+    border: 2px solid #000000dd;
+}
+
+.infor{
+    border: 2px solid #af0707dd;
+    color: #000000dd;
+}
+
+.button{
+    position: relative;
+    left: 40%;
+    bottom: 90px;
+}
+
+.button-enviar{
+    text-decoration: none;
+    padding-left: auto;
+    padding-right: auto;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(255, 255, 255);
 }
