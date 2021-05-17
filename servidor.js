@@ -17,7 +17,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-
 // Datos de conencion mongoDB
 const uri = `mongodb+srv://${process.env.USUARIO}:${process.env.PASSOWORD}@cluster0.i7cxz.mongodb.net/${process.env.BD}?retryWrites=true&w=majority`;
 
