@@ -7,6 +7,8 @@
             <th class="col" scope="col">Nombre</th>
             <th class="col" scope="col">edad</th>
             <th class="col" scope="col">color</th>
+            <th class="col" scope="col">Ancla</th>
+
         </tr>
     </thead>
     <tbody>
@@ -17,6 +19,9 @@
             <td class="infor"><%= mascotas.nombre %> </td>
             <td class="infor"><%= mascotas.edad %> </td>
             <td class="infor"><%= mascotas.color %> </td>
+            <td class="infor">
+                <a href="mascotas/<%= mascotas.id %>" class="editar">Editar</a>
+            </td>
         </tr>
         <% }) %>
         <% } %>
