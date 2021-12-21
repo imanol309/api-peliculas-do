@@ -59,7 +59,7 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
-    "start": "nodemon servidor"
+    "start": "nodemon servidor.js"
   },
   "author": "",
   "license": "ISC"
