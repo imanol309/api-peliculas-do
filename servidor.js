@@ -19,11 +19,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 // Datos de conencion mongoDB
-const uri = `mongodb+srv://${process.env.USUARIO}:${process.env.PASSOWORD}@cluster0.i7cxz.mongodb.net/${process.env.BD}?retryWrites=true&w=majority`;
 
 // conectar con una base de datos con mongoDB
 mongoose
-  .connect(uri, {
+  .connect(process.env.URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
