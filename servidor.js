@@ -6,7 +6,7 @@ const { routerOne } = require("./router/mascotas");
 const { routerTwo } = require("./router/crear")
 const bodyParser = require('body-parser')
 
-if(process.env.NODE_ENV != 'production') {
+if(process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
@@ -52,6 +52,6 @@ app.use((req, res, next) => {
 });
 
 // Activar servidor web
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log(`Servidor puesto en servicio en la puerto ${process.env.PORT || 3000}`);
 });
