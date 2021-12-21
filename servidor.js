@@ -5,7 +5,10 @@ const { router } = require("./router/paginaPrincipal");
 const { routerOne } = require("./router/mascotas");
 const { routerTwo } = require("./router/crear")
 const bodyParser = require('body-parser')
-require('dotenv').config()
+
+if(process.env.NODE_ENV != 'production') {
+  require('dotenv').config()
+}
 
 // Motor de plantilla
 app.set(`view engine`, `ejs`);
@@ -49,6 +52,6 @@ app.use((req, res, next) => {
 });
 
 // Activar servidor web
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Servidor puesto en servicio en la puerto ${process.env.PORT || 3000}`);
 });
