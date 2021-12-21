@@ -24,7 +24,6 @@ const uri = `mongodb+srv://${process.env.USUARIO}:${process.env.PASSOWORD}@clust
 mongoose
   .connect(uri, {
     useNewUrlParser: true,
-    useCreateIndex: true,
     useUnifiedTopology: true,
   })
   .then(() => console.log(`base de datos conectada`))

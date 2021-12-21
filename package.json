@@ -54,12 +54,12 @@
     "escape-string-regexp": "^1.0.5",
     "etag": "^1.8.1",
     "express": "^4.17.1",
+    "mongodb": "^4.2.2",
     "mongoose": "^5.12.9",
     "nodemon": "^2.0.7"
   },
   "scripts": {
-    "star": "node servidor",
-    "dev": "nodemon servidor"
+    "start": "nodemon servidor"
   },
   "author": "",
   "license": "ISC"
