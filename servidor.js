@@ -5,10 +5,8 @@ const { router } = require("./router/paginaPrincipal");
 const { routerOne } = require("./router/mascotas");
 const { routerTwo } = require("./router/crear")
 const bodyParser = require('body-parser')
+require('dotenv').config()
 
-if(process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
-}
 
 // Motor de plantilla
 app.set(`view engine`, `ejs`);
