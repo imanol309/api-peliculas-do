@@ -49,6 +49,6 @@ app.use((req, res, next) => {
 });
 
 // Activar servidor web
-app.listen(process.env.PORT, () => {
-  console.log(`Servidor puesto en servicio en la puerto ${process.env.PORT}`);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Servidor puesto en servicio en la puerto ${process.env.PORT || 3000}`);
 });
