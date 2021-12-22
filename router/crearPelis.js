@@ -1,8 +1,8 @@
 const express = require("express");
-const routerTwo = express.Router();
+const routerCrear = express.Router();
 const { Mascota } = require("../models/EstructuraDeBD");
 
-routerTwo.post("/", async (req, res) => {
+routerCrear.post("/", async (req, res) => {
   const body = req.body;
   try {
     const mascotaDB = new Mascota(body);
@@ -14,5 +14,5 @@ routerTwo.post("/", async (req, res) => {
 });
 
 module.exports = {
-  routerTwo,
+  routerCrear,
 };

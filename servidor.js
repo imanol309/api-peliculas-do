@@ -1,9 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const { router } = require("./router/verM");
-const { routerOne } = require("./router/mascotas");
-const { routerTwo } = require("./router/crearM")
+const { routerVer } = require("./router/verPelis");
+const { routerModificar } = require("./router/modificarPelis");
+const { routerCrear } = require("./router/crearPelis")
+const {routerDelete} = require("./router/eliminarPelis")
 const bodyParser = require('body-parser')
 require('dotenv').config()
 
@@ -11,11 +12,14 @@ require('dotenv').config()
 app.set(`view engine`, `ejs`);
 app.set(`views`, __dirname + `/views`);
 
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
  
+
 // parse application/json
 app.use(bodyParser.json())
+
 
 // conectar con una base de datos con mongoDB
 mongoose
@@ -26,17 +30,25 @@ mongoose
   .then(() => console.log(`base de datos conectada`))
   .catch((e) => console.log(`error en la base de datos`, e));
 
+
 // Carpeta estatica para tener el css y js
 app.use(express.static(__dirname + `/public`));
 
-//llamando mis rutas
-app.use("/", router);
 
-//llamando mis rutas de crear nuevas mascotas
-app.use('/crearMascota',routerTwo)
 
-// llamando mis rutas de mascotas
-app.use("/eliminarMascota", routerOne);
+//llamando ruta de ver la informacion de la pelicula
+app.use("/verPelis", routerVer);
+
+//llamando ruta de agregar nuevas peliculas
+app.use('/crearPelis',routerCrear)
+
+// llamando ruta de eliminar peliculas
+app.use("/eliminarPelis", routerDelete);
+
+//llamado ruta de modificar peliculas
+app.use("/modificarPelis", routerModificar);
+
+
 
 // pagina para cuando no se encuentre los datos de las paginas
 app.use((req, res, next) => {
