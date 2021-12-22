@@ -6,7 +6,7 @@ const {
 } = require("../models/EstructuraDeBD");
 
 // TOMANDO UN ID PARA DESPUES BORRAR ESO DATOS DE LA BASE DE DATOS
-routerDelete.delete("/delete/:id", async (req, res) => {
+routerDelete.delete("/:id", async (req, res) => {
   const id = req.params.id
   try {
     const mascotasDB = await Mascota.findByIdAndDelete({_id: id})

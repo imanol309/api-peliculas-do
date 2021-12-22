@@ -1,18 +1,19 @@
 <%- include("template/cabecera", {titleWeb:"ApiPelis"}) %> 
 
-<ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="#">Active</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled">Disabled</a>
-    </li>
-  </ul>
+  <div class="alert alert-primary" role="alert">
+    GET /verPelis
+  </div>
+  <div class="alert alert-primary" role="alert">
+    GET /verPelis/:id
+  </div>
+  <div class="alert alert-success" role="alert">
+    PORT /crearPeli
+  </div>
+  <div class="alert alert-warning" role="alert">
+    PUT /modificarPelis/:id
+  </div>
+  <div class="alert alert-danger" role="alert">
+    DELETE /eliminarPelis/:id
+  </div>
 </body>
 </html>

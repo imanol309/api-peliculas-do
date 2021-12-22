@@ -6,7 +6,7 @@ const {
 } = require("../models/EstructuraDeBD");
 
 // TOMANDO UN ID PARA DESPUES BORRAR ESO DATOS DE LA BASE DE DATOS
-routerModificar.put("/put/:id", (req, res) => {
+routerModificar.put("/:id", (req, res) => {
   const id = req.params.id
   const body = req.body
   Mascota.findByIdAndUpdate(id, body, { useFindAndModify: false },
