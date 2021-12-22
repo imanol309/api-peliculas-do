@@ -33,12 +33,14 @@ app.use(express.static(__dirname + `/public`));
 //llamando mis rutas
 app.use("/", router);
 
+//llamando mis rutas de crear nuevas mascotas
+app.use('/crearMascota',routerTwo)
+
+
 // llamando mis rutas de mascotas
-app.use("/mascotas", routerOne);
+// app.use("/crearMascota", routerOne);
 
 
-//llamando mis rutas de crear
-app.use('/crear',routerTwo)
 
 
 // pagina para cuando no se encuentre los datos de las paginas
