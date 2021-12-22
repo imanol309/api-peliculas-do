@@ -18,8 +18,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-// Datos de conencion mongoDB
-
 // conectar con una base de datos con mongoDB
 mongoose
   .connect(process.env.URI, {
