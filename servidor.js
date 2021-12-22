@@ -7,7 +7,6 @@ const { routerTwo } = require("./router/crearM")
 const bodyParser = require('body-parser')
 require('dotenv').config()
 
-
 // Motor de plantilla
 app.set(`view engine`, `ejs`);
 app.set(`views`, __dirname + `/views`);
@@ -36,17 +35,14 @@ app.use("/", router);
 //llamando mis rutas de crear nuevas mascotas
 app.use('/crearMascota',routerTwo)
 
-
 // llamando mis rutas de mascotas
 app.use("/eliminarMascota", routerOne);
-
-
-
 
 // pagina para cuando no se encuentre los datos de las paginas
 app.use((req, res, next) => {
   res.status(404).render(`404`);
 });
+
 
 // Activar servidor web
 app.listen(process.env.PORT || 3000, () => {

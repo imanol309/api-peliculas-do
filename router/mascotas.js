@@ -52,7 +52,6 @@ routerOne.put("/put/:id", (req, res) => {
   )
 })
 
-
 // EXPORTANDO AL MODULO PARA UTILIZANDOR EN OTRO DOCUMENTO
 
 module.exports = {
