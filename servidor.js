@@ -1,9 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const { router } = require("./router/paginaPrincipal");
+const { router } = require("./router/verM");
 const { routerOne } = require("./router/mascotas");
-const { routerTwo } = require("./router/crear")
+const { routerTwo } = require("./router/crearM")
 const bodyParser = require('body-parser')
 require('dotenv').config()
 
@@ -38,7 +38,7 @@ app.use('/crearMascota',routerTwo)
 
 
 // llamando mis rutas de mascotas
-// app.use("/crearMascota", routerOne);
+app.use("/eliminarMascota", routerOne);
 
 
 
