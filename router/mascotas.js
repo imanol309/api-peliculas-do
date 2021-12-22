@@ -5,14 +5,12 @@ const {
   Mascota
 } = require("../models/EstructuraDeBD");
 
-// TOMANDO UN ID PARA DESPUES BORRAR ESO DATOS DE LA BASE DE DATOS Y DE LA PAGINA
+// TOMANDO UN ID PARA DESPUES BORRAR ESO DATOS DE LA BASE DE DATOS
 
 routerOne.delete("/delete/:id", async (req, res) => {
   const id = req.params.id
   try {
-    const mascotasDB = await Mascota.findByIdAndDelete({
-      _id: id
-    })
+    const mascotasDB = await Mascota.findByIdAndDelete({_id: id})
     if (mascotasDB) {
       res.json({
         estado: true,
@@ -30,10 +28,10 @@ routerOne.delete("/delete/:id", async (req, res) => {
   }
 })
 
-// TOMANDO UN ID PARA DESPUES BORRAR ESO DATOS DE LA BASE DE DATOS Y DE LA PAGINA
+// TOMANDO UN ID PARA DESPUES BORRAR ESO DATOS DE LA BASE DE DATOS
 
 routerOne.put("/put/:id", (req, res) => {
-  const id = req.param.id
+  const id = req.params.id
   const body = req.body
   Mascota.findByIdAndUpdate(id, body, { useFindAndModify: false },
     function(err, docs) {
@@ -51,7 +49,7 @@ routerOne.put("/put/:id", (req, res) => {
         })
       }
     }
-    )
+  )
 })
 
 
