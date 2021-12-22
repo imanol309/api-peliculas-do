@@ -49,6 +49,11 @@ app.use("/eliminarPelis", routerDelete);
 app.use("/modificarPelis", routerModificar);
 
 
+//Ruta principal html
+app.use("/",(req, res, next) => {
+  res.render(`index`);
+});
+
 
 // pagina para cuando no se encuentre los datos de las paginas
 app.use((req, res, next) => {
