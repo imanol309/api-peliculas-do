@@ -10,10 +10,20 @@ const mascotaSchema = new Schema({
   img: String
 });
 
+
+const userSchema = new Schema({
+  email: String,
+  contraseña: String,
+});
+
+
 // crear el modelo
 
 const Mascota = mongoose.model("infodominicanas", mascotaSchema);
+const userNew = mongoose.model("infodominicanas", userSchema);
+
 
 module.exports = {
   Mascota,
+  userNew
 };
