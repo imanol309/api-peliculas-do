@@ -50,7 +50,7 @@ app.use("/modificarPelis", routerModificar);
 
 
 //Ruta principal html
-app.use("/",(req, res, next) => {
+app.use("/",(req, res) => {
   res.render(`index`);
 });
 
