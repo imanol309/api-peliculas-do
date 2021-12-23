@@ -28,6 +28,28 @@ routerModificar.put("/:id", (req, res) => {
   )
 })
 
+routerModificar.patch("/patch/:id", (req, res) => {
+  const id = req.params.id
+  const body = req.body
+  Mascota.findByIdAndUpdate(id, body, { useFindAndModify: false },
+    function(err, docs) {
+      if(err) {
+        res.json({
+          estado: false,
+          mensaje: `No se pudo editar el dato`,
+          error: err
+        })
+      } else {
+        res.json({
+          estado: true,
+          mensaje: `Dato editado correctamente`,
+          docs: docs
+        })
+      }
+    }
+  )
+})
+
 // EXPORTANDO AL MODULO PARA UTILIZANDOR EN OTRO DOCUMENTO
 module.exports = {
   routerModificar,
