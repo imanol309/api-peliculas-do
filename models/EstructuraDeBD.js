@@ -13,14 +13,14 @@ const mascotaSchema = new Schema({
 
 const userSchema = new Schema({
   email: String,
-  contraseña: String,
+  password: String,
 });
 
 
 // crear el modelo
 
 const Mascota = mongoose.model("infodominicanas", mascotaSchema);
-const userNew = mongoose.model("infodominicanas", userSchema);
+const userNew = mongoose.model("userdominicanos", userSchema);
 
 
 module.exports = {
