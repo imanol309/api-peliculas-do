@@ -1,12 +1,14 @@
-const mongoose =  require('mongoose')
-const mascotaSchema = require('../models/EstructuraDeBD')
 const {userNew} = require("../models/EstructuraDeBD");
+const createToken = require('../services/token')
+const express = require("express");
+const routerCrearUser = express.Router();
 
 
-function signUp(req, res) {
+routerCrearUser.post("/user" ,(req, res) => {
     const user = new userNew({
         email: req.body.email,
-        contraseña: req.body.contraseña
+        name: req.body.name,
+        password: req.body.password
     })
 
     user.save((err) => {
@@ -14,16 +16,17 @@ function signUp(req, res) {
             res.status(500).send({message: `Error al crear el usuario ${err}`})
         }
 
-        return res.status(200).send({token: service.createToken(user)})
+        return res.status(200).send({token: createToken(user)})
     })
-}
+})
 
 
-function signIn(req, res) {
+// function signIn(req, res) {
 
-}
+// }
 
 module.exports = {
-    signUp,
-    signIn
+    // signUp,
+    // signIn,
+    routerCrearUser
 }

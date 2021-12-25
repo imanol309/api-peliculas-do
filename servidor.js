@@ -5,6 +5,7 @@ const { routerVer } = require("./router/verPelis");
 const { routerModificar } = require("./router/modificarPelis");
 const { routerCrear } = require("./router/crearPelis")
 const {routerDelete} = require("./router/eliminarPelis")
+const {routerCrearUser} = require("./controllers/user")
 const bodyParser = require('body-parser')
 require('dotenv').config()
 
@@ -40,13 +41,16 @@ app.use(express.static(__dirname + `/public`));
 app.use("/verPelis", routerVer);
 
 //llamando ruta de agregar nuevas peliculas
-app.use('/crearPelis',routerCrear)
+app.use('/crearPelis', routerCrear)
 
 // llamando ruta de eliminar peliculas
 app.use("/eliminarPelis", routerDelete);
 
 //llamado ruta de modificar peliculas
 app.use("/modificarPelis", routerModificar);
+
+app.use("/crearUser", routerCrearUser);
+
 
 
 //Ruta principal html

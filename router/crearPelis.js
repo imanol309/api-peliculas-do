@@ -1,8 +1,10 @@
 const express = require("express");
 const routerCrear = express.Router();
 const { Mascota } = require("../models/EstructuraDeBD");
+const isAuth = require("../middlewares/auth")
 
-routerCrear.post("/", async (req, res) => {
+
+routerCrear.post("/", isAuth, async (req, res) => {
   const body = req.body;
   try {
     const mascotaDB = new Mascota(body);

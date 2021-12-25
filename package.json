@@ -8,6 +8,7 @@
     "dotenv": "^9.0.2",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "jwt-simple": "^0.5.6",
     "moment": "^2.29.1",
     "mongodb": "^4.2.2",
