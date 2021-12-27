@@ -13,6 +13,7 @@ const mascotaSchema = new Schema({
 
 const userSchema = new Schema({
   email: String,
+  name: String,
   password: String,
 });
 
