@@ -7,9 +7,8 @@ const mascotaSchema = new Schema({
   Director: String,
   año: Date,
   Reparto: String,
-  img: String
+  img: String,
 });
-
 
 const userSchema = new Schema({
   email: String,
@@ -17,14 +16,12 @@ const userSchema = new Schema({
   password: String,
 });
 
-
 // crear el modelo
 
 const Mascota = mongoose.model("infodominicanas", mascotaSchema);
 const userNew = mongoose.model("userdominicanos", userSchema);
 
-
 module.exports = {
   Mascota,
-  userNew
+  userNew,
 };

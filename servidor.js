@@ -3,24 +3,21 @@ const mongoose = require("mongoose");
 const app = express();
 const { routerVer } = require("./router/verPelis");
 const { routerModificar } = require("./router/modificarPelis");
-const { routerCrear } = require("./router/crearPelis")
-const {routerDelete} = require("./router/eliminarPelis")
-const {routerCrearUser} = require("./controllers/user")
-const bodyParser = require('body-parser')
-require('dotenv').config()
+const { routerCrear } = require("./router/crearPelis");
+const { routerDelete } = require("./router/eliminarPelis");
+const { routerCrearUser } = require("./controllers/user");
+const bodyParser = require("body-parser");
+require("dotenv").config();
 
 // Motor de plantilla
 app.set(`view engine`, `ejs`);
 app.set(`views`, __dirname + `/views`);
 
-
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
- 
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
-app.use(bodyParser.json())
-
+app.use(bodyParser.json());
 
 // conectar con una base de datos con mongoDB
 mongoose
@@ -31,17 +28,14 @@ mongoose
   .then(() => console.log(`base de datos conectada`))
   .catch((e) => console.log(`error en la base de datos`, e));
 
-
 // Carpeta estatica para tener el css y js
 app.use(express.static(__dirname + `/public`));
-
-
 
 //llamando ruta de ver la informacion de la pelicula
 app.use("/verPelis", routerVer);
 
 //llamando ruta de agregar nuevas peliculas
-app.use('/crearPelis', routerCrear)
+app.use("/crearPelis", routerCrear);
 
 // llamando ruta de eliminar peliculas
 app.use("/eliminarPelis", routerDelete);
@@ -51,22 +45,19 @@ app.use("/modificarPelis", routerModificar);
 
 app.use("/crearUser", routerCrearUser);
 
-
-
 //Ruta principal html
-app.use("/",(req, res) => {
+app.use("/", (req, res) => {
   res.render(`index`);
 });
-
 
 // pagina para cuando no se encuentre los datos de las paginas
 app.use((req, res, next) => {
   res.status(404).render(`404`);
 });
 
-
 // Activar servidor web
 app.listen(process.env.PORT || 3000, () => {
-  console.log(`Servidor puesto en servicio en la puerto ${process.env.PORT || 3000}`);
+  console.log(
+    `Servidor puesto en servicio en la puerto ${process.env.PORT || 3000}`
+  );
 });
-
