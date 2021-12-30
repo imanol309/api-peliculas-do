@@ -45,9 +45,11 @@ app.use("/eliminarPelis", routerDelete);
 //llamado ruta de modificar peliculas
 app.use("/modificarPelis", routerModificar);
 
+//llamando ruta para crear tu usuario para octener tu token propio
 app.post("/crearUser", signUp);
-app.post("/loginUser", signIn);
 
+// llamando ruta para logearte a ver si tienes una cuenta creada
+app.post("/loginUser", signIn);
 
 //Ruta principal html
 app.use("/", (req, res) => {
