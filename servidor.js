@@ -6,6 +6,8 @@ const { routerModificar } = require("./router/modificarPelis");
 const { routerCrear } = require("./router/crearPelis");
 const { routerDelete } = require("./router/eliminarPelis");
 const { routerCrearUser } = require("./controllers/user");
+const { isAuth } = require("./middlewares/auth");
+const { signUp, signIn } = require("./controllers/user");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 
@@ -43,7 +45,9 @@ app.use("/eliminarPelis", routerDelete);
 //llamado ruta de modificar peliculas
 app.use("/modificarPelis", routerModificar);
 
-app.use("/crearUser", routerCrearUser);
+app.post("/crearUser", signUp);
+app.post("/loginUser", signIn);
+
 
 //Ruta principal html
 app.use("/", (req, res) => {

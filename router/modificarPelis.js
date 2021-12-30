@@ -2,9 +2,10 @@
 const express = require("express");
 const routerModificar = express.Router();
 const { Mascota } = require("../models/EstructuraDeBD");
+const isAuth = require("../middlewares/auth");
 
 // TOMANDO UN ID PARA DESPUES BORRAR ESO DATOS DE LA BASE DE DATOS
-routerModificar.put("/:id", (req, res) => {
+routerModificar.put("/:id", isAuth, (req, res) => {
   const id = req.params.id;
   const body = req.body;
   Mascota.findByIdAndUpdate(
@@ -29,7 +30,7 @@ routerModificar.put("/:id", (req, res) => {
   );
 });
 
-routerModificar.patch("/patch/:id", (req, res) => {
+routerModificar.patch("/patch/:id", isAuth, (req, res) => {
   const id = req.params.id;
   const body = req.body;
   Mascota.findByIdAndUpdate(
