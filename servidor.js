@@ -34,7 +34,7 @@ mongoose
 app.use(express.static(__dirname + `/public`));
 
 //llamando ruta de ver la informacion de la pelicula
-app.use("/verPelis", routerVer);
+app.use("/", routerVer);
 
 //llamando ruta de agregar nuevas peliculas
 app.use("/crearPelis", routerCrear);
@@ -50,11 +50,6 @@ app.post("/crearUser", signUp);
 
 // llamando ruta para logearte a ver si tienes una cuenta creada
 app.post("/loginUser", signIn);
-
-//Ruta principal html
-app.use("/", (req, res) => {
-  res.render(`index`);
-});
 
 // pagina para cuando no se encuentre los datos de las paginas
 app.use((req, res, next) => {
