@@ -8,6 +8,7 @@ const mascotaSchema = new Schema({
   año: Date,
   Reparto: String,
   img: String,
+  video: String
 });
 
 const userSchema = new Schema({
