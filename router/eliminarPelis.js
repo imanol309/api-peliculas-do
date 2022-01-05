@@ -12,12 +12,12 @@ routerDelete.delete("/:id", isAuth, async (req, res) => {
     if (mascotasDB) {
       res.json({
         estado: true,
-        mensaje: `elimando`,
+        mensaje: `Elimando`,
       });
     } else {
       res.json({
         estado: false,
-        mensaje: `archivo no eliminado`,
+        mensaje: `Archivo no eliminado`,
       });
     }
   } catch (error) {

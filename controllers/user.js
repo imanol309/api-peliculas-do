@@ -34,7 +34,28 @@ function signIn(req, res) {
   });
 }
 
+function signDelete(req, res) {
+  const id = req.params.id;
+  try {
+    const signDB = userNew.findByIdAndDelete({ _id: id });
+    if (signDB) {
+      res.json({
+        estado: true,
+        mensaje: `Eliminado`,
+      });
+    } else {
+      res.json({
+        estado: false,
+        mensaje: `Archivo no eliminado`,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   signUp,
   signIn,
+  signDelete
 };

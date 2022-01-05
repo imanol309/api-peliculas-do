@@ -7,7 +7,7 @@ const { routerCrear } = require("./router/crearPelis");
 const { routerDelete } = require("./router/eliminarPelis");
 const { routerCrearUser } = require("./controllers/user");
 const { isAuth } = require("./middlewares/auth");
-const { signUp, signIn } = require("./controllers/user");
+const { signUp, signIn, signDelete } = require("./controllers/user");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 
@@ -50,6 +50,10 @@ app.post("/crearUser", signUp);
 
 // llamando ruta para logearte a ver si tienes una cuenta creada
 app.post("/loginUser", signIn);
+
+// llamando ruta para eliminar los usuario que se crear su token
+app.delete("/deleteUser/:id", signDelete);
+
 
 // pagina para cuando no se encuentre los datos de las paginas
 app.use((req, res, next) => {
