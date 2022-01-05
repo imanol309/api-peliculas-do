@@ -7,7 +7,7 @@ const { routerCrear } = require("./router/crearPelis");
 const { routerDelete } = require("./router/eliminarPelis");
 const { routerCrearUser } = require("./controllers/user");
 const { isAuth } = require("./middlewares/auth");
-const { signUp, signIn, signDelete } = require("./controllers/user");
+const { signUp, signIn, signDelete, signVer } = require("./controllers/user");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 
@@ -33,19 +33,22 @@ mongoose
 // Carpeta estatica para tener el css y js
 app.use(express.static(__dirname + `/public`));
 
-//llamando ruta de ver la informacion de la pelicula
+// llamando ruta de ver la informacion de la pelicula
 app.use("/", routerVer);
 
-//llamando ruta de agregar nuevas peliculas
+// llamando ruta de agregar nuevas peliculas
 app.use("/crearPelis", routerCrear);
 
 // llamando ruta de eliminar peliculas
 app.use("/eliminarPelis", routerDelete);
 
-//llamado ruta de modificar peliculas
+// llamado ruta de modificar peliculas
 app.use("/modificarPelis", routerModificar);
 
-//llamando ruta para crear tu usuario para octener tu token propio
+// llamando ruta para ver los usuarios creados
+app.get("/verUser", signVer);
+
+// llamando ruta para crear tu usuario para octener tu token propio
 app.post("/crearUser", signUp);
 
 // llamando ruta para logearte a ver si tienes una cuenta creada
@@ -53,7 +56,6 @@ app.post("/loginUser", signIn);
 
 // llamando ruta para eliminar los usuario que se crear su token
 app.delete("/deleteUser/:id", signDelete);
-
 
 // pagina para cuando no se encuentre los datos de las paginas
 app.use((req, res, next) => {
