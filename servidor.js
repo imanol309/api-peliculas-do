@@ -5,11 +5,10 @@ const { routerVer } = require("./router/verPelis");
 const { routerModificar } = require("./router/modificarPelis");
 const { routerCrear } = require("./router/crearPelis");
 const { routerDelete } = require("./router/eliminarPelis");
-const { routerCrearUser } = require("./controllers/user");
-const { isAuth } = require("./middlewares/auth");
-const { signUp, signIn, signDelete, signVer } = require("./controllers/user");
+const { signUp, signIn, signDelete } = require("./controllers/user");
 const bodyParser = require("body-parser");
 require("dotenv").config();
+const { UserNew } = require("./models/EstructuraDeBD");
 
 // Motor de plantilla
 app.set(`view engine`, `ejs`);
@@ -44,9 +43,6 @@ app.use("/eliminarPelis", routerDelete);
 
 // llamado ruta de modificar peliculas
 app.use("/modificarPelis", routerModificar);
-
-// llamando ruta para ver los usuarios creados
-app.get("/verUser", signVer);
 
 // llamando ruta para crear tu usuario para octener tu token propio
 app.post("/crearUser", signUp);

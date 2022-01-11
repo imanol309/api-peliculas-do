@@ -1,14 +1,8 @@
-const { userNew } = require("../models/EstructuraDeBD");
+const { UserNew } = require("../models/EstructuraDeBD");
 const { createToken } = require("../services/token");
 
-function signVer(req, res) {
-  userNew.find()
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
-}
-
 function signUp(req, res) {
-  const user = new userNew({
+  const user = new UserNew({
     email: req.body.email,
     name: req.body.name,
     password: req.body.password,
@@ -24,7 +18,7 @@ function signUp(req, res) {
 }
 
 function signIn(req, res) {
-  userNew.find({ email: req.body.email }, (err, user) => {
+  UserNew.find({ email: req.body.email }, (err, user) => {
     if (err) {
       return res.status(500).send({ message: err });
     }
@@ -43,7 +37,7 @@ function signIn(req, res) {
 async function signDelete(req, res)  {
   const id = req.params.id;
   try {
-    const signDB = await userNew.findByIdAndDelete({ _id: id });
+    const signDB = await UserNew.findByIdAndDelete({ _id: id });
     if (signDB) {
       res.json({
         estado: true,
@@ -63,6 +57,5 @@ async function signDelete(req, res)  {
 module.exports = {
   signUp,
   signIn,
-  signVer,
   signDelete,
 };

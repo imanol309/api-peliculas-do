@@ -2,27 +2,28 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const mascotaSchema = new Schema({
-  titulo: String,
+  titulo: { type: String, unique: true },
   genero: String,
   Director: String,
   año: Date,
-  Reparto: String,
-  img: String,
-  video: String
+  Reparto: { type: String, unique: true },
+  img: { type: String, unique: true },
+  video: { type: String, unique: true },
 });
 
 const userSchema = new Schema({
-  email: String,
+  email: { type: String, unique: true, lowercase: true },
   name: String,
-  password: String,
+  password: { type: String, select: false },
+  signupDate: { type: Date, default: Date.now() },
 });
 
 // crear el modelo
 
 const Mascota = mongoose.model("infodominicanas", mascotaSchema);
-const userNew = mongoose.model("userdominicanos", userSchema);
+const UserNew = mongoose.model("userdominicanos", userSchema);
 
 module.exports = {
   Mascota,
-  userNew,
+  UserNew,
 };
