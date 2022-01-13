@@ -41,7 +41,7 @@ mongoose
 app.use(express.static(__dirname + `/public`));
 
 // llamando ruta de ver la informacion de la pelicula
-app.use("/api", routerVer);
+app.use("/api/verPelis", routerVer);
 
 // llamando ruta de agregar nuevas peliculas
 app.use("/api/crearPelis", routerCrear);
@@ -52,10 +52,13 @@ app.use("/api/eliminarPelis", routerDelete);
 // llamado ruta de modificar peliculas
 app.use("/api/modificarPelis", routerModificar);
 
+
 // LOS ENDPOINT para los usuarios logeados
 
+// llamando ruta para ver los usuarios que sean creados, sin su contraseña
 app.get("/api/user/verUser", isAuth, verUser);
 
+// llamando ruta para ver el usuario por id
 app.get("/api/user/verUserId/:id", isAuth, verUserId);
 
 // llamando ruta para crear tu usuario para octener tu token propio
