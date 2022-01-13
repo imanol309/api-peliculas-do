@@ -33,25 +33,25 @@ mongoose
 app.use(express.static(__dirname + `/public`));
 
 // llamando ruta de ver la informacion de la pelicula
-app.use("/", routerVer);
+app.use("/api", routerVer);
 
 // llamando ruta de agregar nuevas peliculas
-app.use("/crearPelis", routerCrear);
+app.use("/api/crearPelis", routerCrear);
 
 // llamando ruta de eliminar peliculas
-app.use("/eliminarPelis", routerDelete);
+app.use("/api/eliminarPelis", routerDelete);
 
 // llamado ruta de modificar peliculas
-app.use("/modificarPelis", routerModificar);
+app.use("/api/modificarPelis", routerModificar);
 
 // llamando ruta para crear tu usuario para octener tu token propio
-app.post("/crearUser", signUp);
+app.post("/api/crearUser", signUp);
 
 // llamando ruta para logearte a ver si tienes una cuenta creada
-app.post("/loginUser", signIn);
+app.post("/api/loginUser", signIn);
 
 // llamando ruta para eliminar los usuario que se crear su token
-app.delete("/deleteUser/:id", signDelete);
+app.delete("/api/deleteUser/:id", signDelete);
 
 // pagina para cuando no se encuentre los datos de las paginas
 app.use((req, res, next) => {
