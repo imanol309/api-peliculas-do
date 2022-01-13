@@ -5,7 +5,7 @@ const { routerVer } = require("./router/verPelis");
 const { routerModificar } = require("./router/modificarPelis");
 const { routerCrear } = require("./router/crearPelis");
 const { routerDelete } = require("./router/eliminarPelis");
-const { signUp, signIn, signDelete } = require("./controllers/user");
+const { signUp, signIn, signDelete, verUser, verUserId } = require("./controllers/user");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 const { UserNew } = require("./models/EstructuraDeBD");
@@ -44,14 +44,22 @@ app.use("/api/eliminarPelis", routerDelete);
 // llamado ruta de modificar peliculas
 app.use("/api/modificarPelis", routerModificar);
 
+
+// LOS ENDPOINT para los usuarios logeados
+
+
+app.get("/api/user/verUser", verUser);
+
+app.get("/api/user/verUserId", verUserId);
+
 // llamando ruta para crear tu usuario para octener tu token propio
-app.post("/api/crearUser", signUp);
+app.post("/api/user/crearUser", signUp);
 
 // llamando ruta para logearte a ver si tienes una cuenta creada
-app.post("/api/loginUser", signIn);
+app.post("/api/user/loginUser", signIn);
 
 // llamando ruta para eliminar los usuario que se crear su token
-app.delete("/api/deleteUser/:id", signDelete);
+app.delete("/api/user/deleteUser/:id", signDelete);
 
 // pagina para cuando no se encuentre los datos de las paginas
 app.use((req, res, next) => {
