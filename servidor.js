@@ -5,7 +5,13 @@ const { routerVer } = require("./router/verPelis");
 const { routerModificar } = require("./router/modificarPelis");
 const { routerCrear } = require("./router/crearPelis");
 const { routerDelete } = require("./router/eliminarPelis");
-const { signUp, signIn, signDelete, verUser, verUserId } = require("./controllers/user");
+const {
+  signUp,
+  signIn,
+  signDelete,
+  verUser,
+  verUserId,
+} = require("./controllers/user");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 const { UserNew } = require("./models/EstructuraDeBD");
@@ -44,13 +50,11 @@ app.use("/api/eliminarPelis", routerDelete);
 // llamado ruta de modificar peliculas
 app.use("/api/modificarPelis", routerModificar);
 
-
 // LOS ENDPOINT para los usuarios logeados
-
 
 app.get("/api/user/verUser", verUser);
 
-app.get("/api/user/verUserId", verUserId);
+app.get("/api/user/verUserId/:id", verUserId);
 
 // llamando ruta para crear tu usuario para octener tu token propio
 app.post("/api/user/crearUser", signUp);
