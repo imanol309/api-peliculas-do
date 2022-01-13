@@ -1,6 +1,19 @@
 const { UserNew } = require("../models/EstructuraDeBD");
 const { createToken } = require("../services/token");
 
+function verUser(req, res) {
+  UserNew.find()
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+}
+
+function verUserId(req, res) {
+  const id = req.params.id;
+  UserNew.findOne({ _id: id })
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+}
+
 function signUp(req, res) {
   const user = new UserNew({
     email: req.body.email,
@@ -34,7 +47,7 @@ function signIn(req, res) {
   });
 }
 
-async function signDelete(req, res)  {
+async function signDelete(req, res) {
   const id = req.params.id;
   try {
     const signDB = await UserNew.findByIdAndDelete({ _id: id });
@@ -55,6 +68,8 @@ async function signDelete(req, res)  {
 }
 
 module.exports = {
+  verUser,
+  verUserId,
   signUp,
   signIn,
   signDelete,
