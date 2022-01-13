@@ -1,7 +1,6 @@
 const express = require("express");
 const routerVer = express.Router();
 const { Mascota } = require("../models/EstructuraDeBD");
-const isAuth = require("../middlewares/auth");
 
 // Decir que pagina se va enviar al servidor y los datos
 routerVer.get(`/`, (req, res) => {

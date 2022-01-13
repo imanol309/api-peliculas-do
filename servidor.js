@@ -15,6 +15,8 @@ const {
 const bodyParser = require("body-parser");
 require("dotenv").config();
 const { UserNew } = require("./models/EstructuraDeBD");
+const isAuth = require("./middlewares/auth")
+
 
 // Motor de plantilla
 app.set(`view engine`, `ejs`);
@@ -52,9 +54,9 @@ app.use("/api/modificarPelis", routerModificar);
 
 // LOS ENDPOINT para los usuarios logeados
 
-app.get("/api/user/verUser", verUser);
+app.get("/api/user/verUser", isAuth, verUser);
 
-app.get("/api/user/verUserId/:id", verUserId);
+app.get("/api/user/verUserId/:id", isAuth, verUserId);
 
 // llamando ruta para crear tu usuario para octener tu token propio
 app.post("/api/user/crearUser", signUp);
@@ -63,7 +65,7 @@ app.post("/api/user/crearUser", signUp);
 app.post("/api/user/loginUser", signIn);
 
 // llamando ruta para eliminar los usuario que se crear su token
-app.delete("/api/user/deleteUser/:id", signDelete);
+app.delete("/api/user/deleteUser/:id", isAuth, signDelete);
 
 // pagina para cuando no se encuentre los datos de las paginas
 app.use((req, res, next) => {
