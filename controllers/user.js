@@ -31,7 +31,7 @@ function signUp(req, res) {
 }
 
 function signIn(req, res) {
-  UserNew.find({ email: req.body.email }, (err, user) => {
+  UserNew.findOne({ email: req.body.email }, (err, user) => {
     if (err) {
       return res.status(500).send({ message: err });
     }

@@ -52,7 +52,6 @@ app.use("/api/eliminarPelis", routerDelete);
 // llamado ruta de modificar peliculas
 app.use("/api/modificarPelis", routerModificar);
 
-
 // LOS ENDPOINT para los usuarios logeados
 
 // llamando ruta para ver los usuarios que sean creados, sin su contraseña
