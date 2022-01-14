@@ -18,10 +18,6 @@ const { UserNew } = require("./models/EstructuraDeBD");
 const isAuth = require("./middlewares/auth")
 
 
-// Motor de plantilla
-// app.set(`view engine`, `ejs`);
-// app.set(`views`, __dirname + `/views`);
-
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
