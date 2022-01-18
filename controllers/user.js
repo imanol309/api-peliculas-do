@@ -1,5 +1,6 @@
 const { UserNew } = require("../models/EstructuraDeBD");
 const { createToken } = require("../services/token");
+const bcryptjs =  require('bcryptjs')
 
 function verUser(req, res) {
   UserNew.find()
@@ -14,11 +15,12 @@ function verUserId(req, res) {
     .catch((error) => res.json({ message: error }));
 }
 
-function signUp(req, res) {
+async function signUp(req, res) {
+  const passwordNormal = req.body.password
   const user = new UserNew({
     email: req.body.email,
     name: req.body.name,
-    password: req.body.password,
+    password: await bcryptjs.hash(passwordNormal, 8)
   });
 
   user.save((err) => {

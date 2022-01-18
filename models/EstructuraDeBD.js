@@ -14,7 +14,7 @@ const mascotaSchema = new Schema({
 const userSchema = new Schema({
   email: { type: String, unique: true, lowercase: true },
   name: String,
-  password: { type: String, select: false },
+  password: { type: String },
   signupDate: { type: Date, default: Date.now() },
 });
 
