@@ -33,12 +33,12 @@ async function signUp(req, res) {
 }
 
 function signIn(req, res) {
-  UserNew.findOne({ email: req.body.email }, (err, user) => {
+  UserNew.findOne({ email: req.body.email, password: req.body.password }, (err, user) => {
     if (err) {
       return res.status(500).send({ message: err });
     }
     if (!user) {
-      return res.status(404).send({ message: "No existe el usuario" });
+      return res.status(404).send({ message: "Tu usuario o contraseña no exicte en la BD" });
     }
 
     req.user = user;
