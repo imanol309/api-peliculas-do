@@ -15,6 +15,7 @@ const userSchema = new Schema({
   email: { type: String, unique: true, lowercase: true },
   name: String,
   password: { type: String },
+  token: {type: String},
   signupDate: { type: Date, default: Date.now() },
 });
 

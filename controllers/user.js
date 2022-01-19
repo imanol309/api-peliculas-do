@@ -17,10 +17,17 @@ function verUserId(req, res) {
 
 async function signUp(req, res) {
   const passwordNormal = req.body.password;
+  const userToken = ({
+    email: req.body.email,
+    name: req.body.name,
+    password: await bcryptjs.hash(passwordNormal, 8),
+  });
+
   const user = new UserNew({
     email: req.body.email,
     name: req.body.name,
     password: await bcryptjs.hash(passwordNormal, 8),
+    token: createToken(userToken) 
   });
 
   user.save((err) => {
@@ -28,7 +35,7 @@ async function signUp(req, res) {
       res.status(500).send({ message: `Error al crear el usuario ${err}` });
     }
 
-    return res.status(200).send({ token: createToken(user) });
+    return res.status(200).send({ token: createToken(userToken) });
   });
 }
 
