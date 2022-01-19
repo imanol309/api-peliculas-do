@@ -74,10 +74,10 @@ async function signDelete(req, res) {
   }
 }
 
-function signUpdate(req, res) {
+async function signUpdate(req, res) {
   const id = req.params.id;
-  const password = req.body;
-  UserNew.findByIdAndUpdate(id,password,{ useFindAndModify: false },
+  req.body.password = await bcryptjs.hash(req.body.password, 8);
+  UserNew.findByIdAndUpdate(id,req.body,{ useFindAndModify: false },
     function (err, docs) {
       console.log(docs);
       if (err) {
