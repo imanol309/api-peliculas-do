@@ -32,13 +32,16 @@ async function signUp(req, res) {
   });
 }
 
-function signIn(req, res) {
-  UserNew.findOne({ email: req.body.email, password: req.body.password }, (err, user) => {
+async function signIn(req, res) {
+  await UserNew.findOne({ email: req.body.email }, (err, user) => {
     if (err) {
       return res.status(500).send({ message: err });
     }
-    if (!user) {
-      return res.status(404).send({ message: "Tu usuario o contraseña no exicte en la BD" });
+    if (!user.email) {
+      return res.status(404).send({ message: "Tu usuario no exicte en la BD" });
+    }
+    if (!bcryptjs.compareSync(req.body.password, user.password)) {
+      return res.status(404).send({ message: "Tu contraseña no exicte en la BD" });
     }
 
     req.user = user;
