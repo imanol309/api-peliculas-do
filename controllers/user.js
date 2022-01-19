@@ -74,10 +74,35 @@ async function signDelete(req, res) {
   }
 }
 
+async function signUpdate(req, res) {
+  const id =  req.params.id;
+  const password =  req.body.password
+  await UserNew.findByIdAndUpdate(id, password, { useFindAndModify: false },
+    function(err, docs) {
+      console.log(docs)
+      if(err) {
+        res.json({
+          estado:false,
+          mensaje: `No se pudo editar la contraseña`,
+          error: err
+        })
+      }else {
+        res.json({
+          estado: true,
+          mensaje: `La contraseña fue modificada correctamente`,
+          docs: docs
+        })
+      }
+    }
+  )
+}
+
+
 module.exports = {
   verUser,
   verUserId,
   signUp,
   signIn,
   signDelete,
+  signUpdate
 };

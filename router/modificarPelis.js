@@ -33,10 +33,7 @@ routerModificar.put("/:id", isAuth, (req, res) => {
 routerModificar.patch("/patch/:id", isAuth, (req, res) => {
   const id = req.params.id;
   const body = req.body;
-  Mascota.findByIdAndUpdate(
-    id,
-    body,
-    { useFindAndModify: false },
+  Mascota.findByIdAndUpdate(id,body,{ useFindAndModify: false },
     function (err, docs) {
       if (err) {
         res.json({
