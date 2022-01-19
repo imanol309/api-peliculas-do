@@ -1,6 +1,6 @@
 const { UserNew } = require("../models/EstructuraDeBD");
 const { createToken } = require("../services/token");
-const bcryptjs =  require('bcryptjs')
+const bcryptjs = require("bcryptjs");
 
 function verUser(req, res) {
   UserNew.find()
@@ -16,11 +16,11 @@ function verUserId(req, res) {
 }
 
 async function signUp(req, res) {
-  const passwordNormal = req.body.password
+  const passwordNormal = req.body.password;
   const user = new UserNew({
     email: req.body.email,
     name: req.body.name,
-    password: await bcryptjs.hash(passwordNormal, 8)
+    password: await bcryptjs.hash(passwordNormal, 8),
   });
 
   user.save((err) => {
@@ -41,7 +41,9 @@ async function signIn(req, res) {
       return res.status(404).send({ message: "Tu usuario no exicte en la BD" });
     }
     if (!bcryptjs.compareSync(req.body.password, user.password)) {
-      return res.status(404).send({ message: "Tu contraseña no exicte en la BD" });
+      return res
+        .status(404)
+        .send({ message: "Tu contraseña no exicte en la BD" });
     }
 
     req.user = user;

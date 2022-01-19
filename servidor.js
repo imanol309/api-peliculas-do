@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const { routerVer } = require("./router/verPelis"); 
+const { routerVer } = require("./router/verPelis");
 const { routerModificar } = require("./router/modificarPelis");
 const { routerCrear } = require("./router/crearPelis");
 const { routerDelete } = require("./router/eliminarPelis");
@@ -14,7 +14,7 @@ const {
 } = require("./controllers/user");
 const bodyParser = require("body-parser");
 require("dotenv").config();
-const isAuth = require("./middlewares/auth")
+const isAuth = require("./middlewares/auth");
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
