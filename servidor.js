@@ -11,6 +11,7 @@ const {
   signDelete,
   verUser,
   verUserId,
+  signUpdate
 } = require("./controllers/user");
 const bodyParser = require("body-parser");
 require("dotenv").config();
@@ -59,6 +60,9 @@ app.post("/api/user/crearUser", signUp);
 
 // llamando ruta para logearte a ver si tienes una cuenta creada
 app.post("/api/user/loginUser", signIn);
+
+// Llamando ruta para modificar las contraseña de los usuarios
+app.patch("/api/user/modificarUser/:id", signUpdate)
 
 // llamando ruta para eliminar los usuario que se crear su token
 app.delete("/api/user/deleteUser/:id", isAuth, signDelete);
