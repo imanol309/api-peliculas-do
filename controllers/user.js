@@ -17,17 +17,17 @@ function verUserId(req, res) {
 
 async function signUp(req, res) {
   const passwordNormal = req.body.password;
-  const userToken = ({
+  const userToken = {
     email: req.body.email,
     name: req.body.name,
     password: await bcryptjs.hash(passwordNormal, 8),
-  });
+  };
 
   const user = new UserNew({
     email: req.body.email,
     name: req.body.name,
     password: await bcryptjs.hash(passwordNormal, 8),
-    token: createToken(userToken) 
+    token: createToken(userToken),
   });
 
   user.save((err) => {
@@ -84,7 +84,10 @@ async function signDelete(req, res) {
 async function signUpdate(req, res) {
   const id = req.params.id;
   req.body.password = await bcryptjs.hash(req.body.password, 8);
-  UserNew.findByIdAndUpdate(id,req.body,{ useFindAndModify: false },
+  UserNew.findByIdAndUpdate(
+    id,
+    req.body,
+    { useFindAndModify: false },
     function (err, docs) {
       console.log(docs);
       if (err) {
