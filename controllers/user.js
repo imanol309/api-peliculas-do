@@ -2,12 +2,14 @@ const { UserNew } = require("../models/EstructuraDeBD");
 const { createToken } = require("../services/token");
 const bcryptjs = require("bcryptjs");
 
+// Ruta para ver usuarios
 function verUser(req, res) {
   UserNew.find()
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 }
 
+// Ruta para ver un usuario en espesifico
 function verUserId(req, res) {
   const id = req.params.id;
   UserNew.findOne({ _id: id })
@@ -15,6 +17,7 @@ function verUserId(req, res) {
     .catch((error) => res.json({ message: error }));
 }
 
+//Ruta para crear un usuario nuevo y token
 async function signUp(req, res) {
   const passwordNormal = req.body.password;
   const userToken = {
@@ -39,6 +42,7 @@ async function signUp(req, res) {
   });
 }
 
+// Ruta para ver si esta logeado en la api
 async function signIn(req, res) {
   await UserNew.findOne({ email: req.body.email }, (err, user) => {
     if (err) {
@@ -61,6 +65,7 @@ async function signIn(req, res) {
   });
 }
 
+// Ruta para eliminar los usuarios que no deseo
 async function signDelete(req, res) {
   const id = req.params.id;
   try {
@@ -81,6 +86,7 @@ async function signDelete(req, res) {
   }
 }
 
+// Ruta para editar la contraseña de un usuario ya creado
 async function signUpdate(req, res) {
   const id = req.params.id;
   req.body.password = await bcryptjs.hash(req.body.password, 8);
@@ -107,6 +113,7 @@ async function signUpdate(req, res) {
   );
 }
 
+// Exportando todas las rutas
 module.exports = {
   verUser,
   verUserId,
