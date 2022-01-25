@@ -24,22 +24,21 @@ routerVer.get("/titulo/:nombre", async (req, res) => {
     .catch((error) => res.json({ message: error }));
 });
 
-// routerVer.get("/years/:years", async (req, res) => {
-//   const id =  req.params.years;
-//   const yea = `${id}-01-01T00:00:00.000Z`
-//   console.log(yea);
-//   await Mascota.find({ año: yea})
-//     .then((data) => res.json(data))
-//     .catch((error) => res.json({message: error}))
-// })
-
+routerVer.get("/fecha/:years", async (req, res) => {
+  const fecha = req.params.years;
+  // const fechaOp = `${fecha}-01-01T00:00:00.000Z`;
+  // console.log(fechaOp);
+  await Mascota.find({ año: fecha })
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+});
 
 routerVer.get("/genero/:nombre", async (req, res) => {
-  const generos =  req.params.nombre;
+  const generos = req.params.nombre;
   await Mascota.find({ genero: generos })
     .then((data) => res.json(data))
-    .catch((error) => res.json({message: error}))
-})
+    .catch((error) => res.json({ message: error }));
+});
 
 module.exports = {
   routerVer,
