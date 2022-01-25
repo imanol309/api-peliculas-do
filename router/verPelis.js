@@ -26,8 +26,6 @@ routerVer.get("/titulo/:nombre", async (req, res) => {
 
 routerVer.get("/fecha/:years", async (req, res) => {
   const fecha = req.params.years;
-  // const fechaOp = `${fecha}-01-01T00:00:00.000Z`;
-  // console.log(fechaOp);
   await Mascota.find({ año: fecha })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
