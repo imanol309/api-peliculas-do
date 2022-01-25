@@ -1,5 +1,6 @@
 const { decodeToken } = require("../services/token.js");
 
+// Funcion para ver si tienes autorizacion en la api
 function isAuth(req, res, next) {
   if (!req.headers.authorization) {
     return res.status(403).send({ message: "No tienes autorizacion" });

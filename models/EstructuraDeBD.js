@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+// Extructura de como se van a introducir los datos en peliculas
 const mascotaSchema = new Schema({
   titulo: { type: String, unique: true },
   genero: String,
@@ -11,6 +12,7 @@ const mascotaSchema = new Schema({
   video: { type: String, unique: true },
 });
 
+// Estructura de como se van introducir los datos en usuarios
 const userSchema = new Schema({
   email: { type: String, unique: true, lowercase: true },
   name: String,
@@ -20,7 +22,6 @@ const userSchema = new Schema({
 });
 
 // crear el modelo
-
 const Mascota = mongoose.model("infodominicanas", mascotaSchema);
 const UserNew = mongoose.model("userdominicanos", userSchema);
 

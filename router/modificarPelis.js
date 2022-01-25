@@ -30,6 +30,7 @@ routerModificar.put("/:id", isAuth, (req, res) => {
   );
 });
 
+// TOMANDO UN ID PARA DESPUES EDITAR UN DATO EN EXPESIFICIO
 routerModificar.patch("/patch/:id", isAuth, (req, res) => {
   const id = req.params.id;
   const body = req.body;
