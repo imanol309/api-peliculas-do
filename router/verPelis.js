@@ -37,8 +37,8 @@ routerVer.get("/fecha/:years", async (req, res) => {
 // RUTA PARA BUSCAR LAS PELICULAS POR EL GENERO DE LA PELICULA
 routerVer.get("/genero/:nombre", async (req, res) => {
   const generos = req.params.nombre;
-  const nombreSG = id.split("-").join(" ");
-  await Mascota.find({ genero: generos })
+  const nombreSG = generos.split(" ").join("/");
+  await Mascota.find({ genero: nombreSG})
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
