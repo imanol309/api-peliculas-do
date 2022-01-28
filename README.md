@@ -36,7 +36,6 @@
 <!-- OVERVIEW -->
 
 ## Overview
-
 ![](./public/video/ScreenGIF.gif)
 
 <!-- ![image]() -->
