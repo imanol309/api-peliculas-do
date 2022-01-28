@@ -53,7 +53,7 @@
 
 <!-- List the features of your application or follow the template. Don't share the figma file here :) -->
 
-This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/TtUjDt19eIHxNQ4n5jps) was to build an application to complete the given user stories.
+This Api was created to deliver the data of all the movies that have been originally made in the Dominican Republic, such as its name, creator, genre, cast, creation date, movie cover and the URL where you can see the movie completely free.
 
 ## How To Use
 
