@@ -37,7 +37,7 @@
 
 ## Overview
 
-![]("./public/video/ScreenGIF.mp4")
+![](./public/video/ScreenGIF.gif)
 
 <!-- ![image]() -->
 
