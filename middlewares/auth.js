@@ -17,6 +17,7 @@ function isAuth(req, res, next) {
     });
 }
 
+// Funcion para pedir un secret para poder utilizar algunas rutas privadas
 function isAuthSecret(req, res, next) {
   if (!req.headers.authorization) {
     return res.status(403).send({ message: "No tienes autorizacion" });
