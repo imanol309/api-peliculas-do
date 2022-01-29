@@ -17,6 +17,18 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 const isAuth = require("./middlewares/auth");
 
+
+function isAuthSecret(req, res, next) {
+  if (!req.headers.authorization) {
+    return res.status(403).send({ message: "No tienes autorizacion" });
+  }
+  if (req.headers.authorization === process.env.SECRET_TOKEN) {
+    next();
+  } else {
+    return res.status(403).send({ message: "El SECRET es incorrecto" });
+  }
+}
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -56,7 +68,7 @@ app.get("/api/user/verUser", isAuth, verUser);
 app.get("/api/user/verUserId/:id", isAuth, verUserId);
 
 // llamando ruta para crear tu usuario para octener tu token propio
-app.post("/api/user/crearUser", signUp);
+app.post("/api/user/crearUser",isAuthSecret , signUp);
 
 // llamando ruta para logearte a ver si tienes una cuenta creada
 app.post("/api/user/loginUser", signIn);
