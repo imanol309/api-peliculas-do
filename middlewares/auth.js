@@ -28,9 +28,7 @@ function isAuthSecret(req, res, next) {
   }
 }
 
-
-
-
+// EXPORTANDO LAS FUNCIONES DE ESTE MODULE
 module.exports = {
   isAuth,
   isAuthSecret,
