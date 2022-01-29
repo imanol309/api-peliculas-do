@@ -113,6 +113,7 @@ async function signUpdate(req, res) {
   );
 }
 
+
 // Exportando todas las rutas
 module.exports = {
   verUser,

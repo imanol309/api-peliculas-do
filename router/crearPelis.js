@@ -1,7 +1,7 @@
 const express = require("express");
 const routerCrear = express.Router();
 const { Mascota } = require("../models/EstructuraDeBD");
-const isAuth = require("../middlewares/auth");
+const {isAuth} = require("../middlewares/auth");
 
 routerCrear.post("/", isAuth, async (req, res) => {
   const body = req.body;

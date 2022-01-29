@@ -15,19 +15,7 @@ const {
 } = require("./controllers/user");
 const bodyParser = require("body-parser");
 require("dotenv").config();
-const isAuth = require("./middlewares/auth");
-
-
-function isAuthSecret(req, res, next) {
-  if (!req.headers.authorization) {
-    return res.status(403).send({ message: "No tienes autorizacion" });
-  }
-  if (req.headers.authorization === process.env.SECRET_TOKEN) {
-    next();
-  } else {
-    return res.status(403).send({ message: "El SECRET es incorrecto" });
-  }
-}
+const {isAuth, isAuthSecret} = require("./middlewares/auth");
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));

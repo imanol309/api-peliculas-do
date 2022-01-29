@@ -2,7 +2,7 @@
 const express = require("express");
 const routerModificar = express.Router();
 const { Mascota } = require("../models/EstructuraDeBD");
-const isAuth = require("../middlewares/auth");
+const {isAuth} = require("../middlewares/auth");
 
 // TOMANDO UN ID PARA DESPUES BORRAR ESO DATOS DE LA BASE DE DATOS
 routerModificar.put("/:id", isAuth, (req, res) => {

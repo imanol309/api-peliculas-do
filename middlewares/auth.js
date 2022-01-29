@@ -17,5 +17,22 @@ function isAuth(req, res, next) {
     });
 }
 
+function isAuthSecret(req, res, next) {
+  if (!req.headers.authorization) {
+    return res.status(403).send({ message: "No tienes autorizacion" });
+  }
+  if (req.headers.authorization === process.env.SECRET_TOKEN) {
+    next();
+  } else {
+    return res.status(403).send({ message: "El SECRET es incorrecto" });
+  }
+}
 
-module.exports = isAuth;
+
+
+
+module.exports = {
+  isAuth,
+  isAuthSecret,
+
+};
