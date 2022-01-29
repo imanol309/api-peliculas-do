@@ -1,10 +1,10 @@
 const express = require("express");
 const routerVer = express.Router();
-const { Mascota } = require("../models/EstructuraDeBD");
+const { Peliculas } = require("../models/EstructuraDeBD");
 
 // Decir que pagina se va enviar al servidor y los datos
 routerVer.get(`/`, (req, res) => {
-  Mascota.find()
+  Peliculas.find()
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
@@ -12,7 +12,7 @@ routerVer.get(`/`, (req, res) => {
 // RUTA PARA BUSCAR LA PELICULA POR EL ID
 routerVer.get("/:id", async (req, res) => {
   const id = req.params.id;
-  await Mascota.findOne({ _id: id })
+  await Peliculas.findOne({ _id: id })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
@@ -21,7 +21,7 @@ routerVer.get("/:id", async (req, res) => {
 routerVer.get("/titulo/:nombre", async (req, res) => {
   const id = req.params.nombre;
   const titulos = id.split("-").join(" ");
-  await Mascota.findOne({ titulo: titulos })
+  await Peliculas.findOne({ titulo: titulos })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
@@ -29,7 +29,7 @@ routerVer.get("/titulo/:nombre", async (req, res) => {
 // RUTA PARA BUSCAR LA PELICULA POR EL YEARS, PERO TIENE UN PEQUEÑO BUG(FALTA SOLUCIONAR)
 routerVer.get("/fecha/:years", async (req, res) => {
   const fecha = req.params.years;
-  await Mascota.find({ año: fecha })
+  await Peliculas.find({ año: fecha })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
@@ -38,7 +38,7 @@ routerVer.get("/fecha/:years", async (req, res) => {
 routerVer.get("/genero/:nombre", async (req, res) => {
   const generos = req.params.nombre;
   const nombreSG = generos.split(" ").join("/");
-  await Mascota.find({ genero: nombreSG})
+  await Peliculas.find({ genero: nombreSG })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });

@@ -1,14 +1,14 @@
 // LLAMADNO ALGUNOS DE NPM QUE VOY A UTILIZAR
 const express = require("express");
 const routerModificar = express.Router();
-const { Mascota } = require("../models/EstructuraDeBD");
-const {isAuth} = require("../middlewares/auth");
+const { Peliculas } = require("../models/EstructuraDeBD");
+const { isAuth } = require("../middlewares/auth");
 
 // TOMANDO UN ID PARA DESPUES BORRAR ESO DATOS DE LA BASE DE DATOS
 routerModificar.put("/:id", isAuth, (req, res) => {
   const id = req.params.id;
   const body = req.body;
-  Mascota.findByIdAndUpdate(
+  Peliculas.findByIdAndUpdate(
     id,
     body,
     { useFindAndModify: false },
@@ -34,7 +34,7 @@ routerModificar.put("/:id", isAuth, (req, res) => {
 routerModificar.patch("/patch/:id", isAuth, (req, res) => {
   const id = req.params.id;
   const body = req.body;
-  Mascota.findByIdAndUpdate(
+  Peliculas.findByIdAndUpdate(
     id,
     body,
     { useFindAndModify: false },

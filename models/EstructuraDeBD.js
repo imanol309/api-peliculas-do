@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Extructura de como se van a introducir los datos en peliculas
-const mascotaSchema = new Schema({
+const peliculaSchema = new Schema({
   titulo: { type: String, unique: true },
   genero: String,
   Director: String,
@@ -22,10 +22,10 @@ const userSchema = new Schema({
 });
 
 // crear el modelo
-const Mascota = mongoose.model("infodominicanas", mascotaSchema);
+const Peliculas = mongoose.model("infodominicanas", peliculaSchema);
 const UserNew = mongoose.model("userdominicanos", userSchema);
 
 module.exports = {
-  Mascota,
+  Peliculas,
   UserNew,
 };
