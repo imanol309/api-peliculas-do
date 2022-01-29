@@ -15,7 +15,7 @@ const {
 } = require("./controllers/user");
 const bodyParser = require("body-parser");
 require("dotenv").config();
-const {isAuth, isAuthSecret} = require("./middlewares/auth");
+const { isAuth, isAuthSecret } = require("./middlewares/auth");
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -56,13 +56,13 @@ app.get("/api/user/verUser", isAuth, verUser);
 app.get("/api/user/verUserId/:id", isAuth, verUserId);
 
 // llamando ruta para crear tu usuario para octener tu token propio
-app.post("/api/user/crearUser",isAuthSecret , signUp);
+app.post("/api/user/crearUser", isAuthSecret, signUp);
 
 // llamando ruta para logearte a ver si tienes una cuenta creada
 app.post("/api/user/loginUser", signIn);
 
 // Llamando ruta para modificar las contraseña de los usuarios
-app.patch("/api/user/modificarUser/:id",isAuthSecret ,signUpdate);
+app.patch("/api/user/modificarUser/:id", isAuthSecret, signUpdate);
 
 // llamando ruta para eliminar los usuario que se crear su token
 app.delete("/api/user/deleteUser/:id", isAuthSecret, signDelete);

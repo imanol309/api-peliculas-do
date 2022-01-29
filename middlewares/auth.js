@@ -33,5 +33,4 @@ function isAuthSecret(req, res, next) {
 module.exports = {
   isAuth,
   isAuthSecret,
-
 };
