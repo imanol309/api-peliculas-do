@@ -65,7 +65,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 $ git clone https://github.com/imanol309/api-peliculas-do.git
 
 # Install dependencies
-$ npm install
+$ npm install & $ npm i
 
 # Run the app
 $ npm start
