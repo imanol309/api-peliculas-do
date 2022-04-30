@@ -37,8 +37,7 @@ routerVer.get("/fecha/:years", async (req, res) => {
 // RUTA PARA BUSCAR LAS PELICULAS POR EL GENERO DE LA PELICULA
 routerVer.get("/genero/:nombre", async (req, res) => {
   const generos = req.params.nombre;
-  const nombreSG = generos.split(" ").join("/");
-  await Peliculas.find({ genero: nombreSG })
+  await Peliculas.find({ genero: generos })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
