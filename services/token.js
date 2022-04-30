@@ -1,6 +1,8 @@
-const jwt = require("jwt-simple");
-const moment = require("moment");
+// los paquetes que estoy utilizando para crear el token
+const jwt = require("jwt-simple"); // Paquete para crear token jwt
+const moment = require("moment"); //Paquete para el tiempo de la creacion del token
 
+// Funcion para crear el token con los datos que le envies de los usuarios.
 function createToken(user) {
   const payload = {
     sub: user._id,
@@ -11,6 +13,7 @@ function createToken(user) {
   return jwt.encode(payload, process.env.SECRET_TOKEN);
 }
 
+// Funcion para decifrar el token
 function decodeToken(token) {
   const decoded = new Promise((resolve, reject) => {
     try {
@@ -33,4 +36,5 @@ function decodeToken(token) {
   return decoded;
 }
 
+// Modulo para esportar las dos funcion
 module.exports = { createToken, decodeToken };
