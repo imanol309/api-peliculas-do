@@ -40,7 +40,7 @@ app.use(function (req, res, next) {
 // set up rate limiter: maximum of five requests per minute
 var limiter = RateLimit({
   windowMs: 1*60*1000, // 1 minute
-  max: 5
+  max: 50
 });
 
 // apply rate limiter to all requests
