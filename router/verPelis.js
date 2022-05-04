@@ -22,7 +22,7 @@ routerVer.get("/titulo/:nombre", async (req, res) => {
   const id = req.params.nombre;
   const titulos = id.split("-").join(" ");
   await Peliculas.findOne({ titulo: titulos })
-    .then((data) => res.json(data))
+    .then((data) => res.json([data]))
     .catch((error) => res.json({ message: error }));
 });
 
