@@ -14,6 +14,7 @@ const {
   signUpdate,
 } = require("./controllers/user");
 const bodyParser = require("body-parser");
+const RateLimit = require('express-rate-limit');
 require("dotenv").config();
 const { isAuth, isAuthSecret } = require("./middlewares/auth");
 
@@ -36,6 +37,14 @@ app.use(function (req, res, next) {
   next();
 });
 
+// set up rate limiter: maximum of five requests per minute
+var limiter = RateLimit({
+  windowMs: 1*60*1000, // 1 minute
+  max: 5
+});
+
+// apply rate limiter to all requests
+app.use(limiter);
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
