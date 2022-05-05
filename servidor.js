@@ -14,33 +14,40 @@ const {
   signUpdate,
 } = require("./controllers/user");
 const bodyParser = require("body-parser");
-const RateLimit = require('express-rate-limit');
+const RateLimit = require("express-rate-limit");
 require("dotenv").config();
 const { isAuth, isAuthSecret } = require("./middlewares/auth");
+const cors = require("cors");
 
-app.use(function (req, res, next) {
+// app.use(function (req, res, next) {
 
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', ['http://localhost:8888', 'https://films-do-ng.vercel.app']);
+//   // Website you wish to allow to connect
+//   res.setHeader('Access-Control-Allow-Origin', ['http://localhost:8888', 'https://films-do-ng.vercel.app']);
 
-  // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//   // Request methods you wish to allow
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-  // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+//   // Request headers you wish to allow
+//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader('Access-Control-Allow-Credentials', true);
+//   // Set to true if you need the website to include cookies in the requests sent
+//   // to the API (e.g. in case you use sessions)
+//   res.setHeader('Access-Control-Allow-Credentials', true);
 
-  // Pass to next layer of middleware
-  next();
-});
+//   // Pass to next layer of middleware
+//   next();
+// });
+
+app.use(
+  cors({
+    origin: ["http://localhost:8888", "https://films-do-ng.vercel.app"],
+  })
+);
 
 // set up rate limiter: maximum of five requests per minute
 var limiter = RateLimit({
-  windowMs: 1*60*1000, // 1 minute
-  max: 1000
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 1000,
 });
 
 // parse application/x-www-form-urlencoded
