@@ -19,25 +19,8 @@ require("dotenv").config();
 const { isAuth, isAuthSecret } = require("./middlewares/auth");
 const cors = require("cors");
 
-// app.use(function (req, res, next) {
 
-//   // Website you wish to allow to connect
-//   res.setHeader('Access-Control-Allow-Origin', ['http://localhost:8888', 'https://films-do-ng.vercel.app']);
-
-//   // Request methods you wish to allow
-//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-//   // Request headers you wish to allow
-//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-//   // Set to true if you need the website to include cookies in the requests sent
-//   // to the API (e.g. in case you use sessions)
-//   res.setHeader('Access-Control-Allow-Credentials', true);
-
-//   // Pass to next layer of middleware
-//   next();
-// });
-
+// using the cors package to be able to configure who can make requests for this api
 app.use(
   cors({
     origin: ["http://localhost:8888", "https://films-do-ng.vercel.app"],
