@@ -21,11 +21,27 @@ const userSchema = new Schema({
   signupDate: { type: Date, default: Date.now() },
 });
 
+
+const peliculaVistasSchema = new Schema({
+  titulo: { type: String, unique: true },
+  genero: String,
+  Director: String,
+  year: Date,
+  Reparto: { type: String },
+  img: { type: String, unique: true },
+  video: { type: String, unique: true },
+  descripcion: { type: String, unique: true },
+  duracion: String,
+});
+
 // crear el modelo
 const Peliculas = mongoose.model("infodominicanas", peliculaSchema);
+const PeliculasMVistas = mongoose.model("masvitasdominicanos", peliculaVistasSchema);
 const UserNew = mongoose.model("userdominicanos", userSchema);
+
 
 module.exports = {
   Peliculas,
   UserNew,
+  PeliculasMVistas
 };

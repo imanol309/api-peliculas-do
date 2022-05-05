@@ -1,6 +1,6 @@
 const express = require("express");
 const routerVer = express.Router();
-const { Peliculas } = require("../models/EstructuraDeBD");
+const { Peliculas, PeliculasMVistas } = require("../models/EstructuraDeBD");
 
 // Decir que pagina se va enviar al servidor y los datos
 routerVer.get(`/`, (req, res) => {
@@ -8,6 +8,13 @@ routerVer.get(`/`, (req, res) => {
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
+
+routerVer.get(`/masVistas`, (req, res) => {
+  PeliculasMVistas.find()
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+});
+
 
 // RUTA PARA BUSCAR LA PELICULA POR EL ID
 routerVer.get("/:id", async (req, res) => {
