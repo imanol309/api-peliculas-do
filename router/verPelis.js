@@ -24,6 +24,14 @@ routerVer.get("/:id", async (req, res) => {
     .catch((error) => res.json({ message: error }));
 });
 
+// RUTA PARA BUSCAR LA PELICULA POR EL ID
+routerVer.get("/masVistas/:id", async (req, res) => {
+  const id = req.params.id;
+  await PeliculasMVistas.findOne({ _id: id })
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+});
+
 // RUTA PARA BUSCAR LA PELICULA POR EL NOMBRE DE LA PELI
 routerVer.get("/titulo/:nombre", async (req, res) => {
   const id = req.params.nombre;
