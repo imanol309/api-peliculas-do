@@ -77,7 +77,7 @@ app.get("/api/user/verUserId/:id", isAuth, verUserId);
 app.post("/api/user/crearUser", isAuthSecret, signUp);
 
 // llamando ruta para logearte a ver si tienes una cuenta creada
-app.post("/api/user/loginUser", signIn);
+app.get("/api/user/loginUser", signIn);
 
 // Llamando ruta para modificar las contraseña de los usuarios
 app.patch("/api/user/modificarUser/:id", isAuthSecret, signUpdate);
