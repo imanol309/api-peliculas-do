@@ -12,6 +12,7 @@ const {
   verUser,
   verUserId,
   signUpdate,
+  addMovieToMyList
 } = require("./controllers/user");
 const bodyParser = require("body-parser");
 const RateLimit = require("express-rate-limit");
@@ -68,22 +69,25 @@ app.use("/api/modificarPelis", routerModificar, limiter);
 // LOS ENDPOINT para los usuarios logeados
 
 // llamando ruta para ver los usuarios que sean creados, sin su contraseña
-app.get("/api/user/verUser", isAuth, verUser);
+app.get("/api/user/verUser", isAuthSecret, verUser);
 
 // llamando ruta para ver el usuario por id
-app.get("/api/user/verUserId/:id", isAuth, verUserId);
+app.get("/api/user/verUserId/:id", isAuthSecret ,verUserId);
 
 // llamando ruta para crear tu usuario para octener tu token propio
-app.post("/api/user/crearUser", isAuthSecret, signUp);
+app.post("/api/user/crearUser", signUp);
+
+// llamando ruta para crear una nueva pelicula en tu lista
+app.post("/api/user/addMovieList/:id", addMovieToMyList);
 
 // llamando ruta para logearte a ver si tienes una cuenta creada
 app.get("/api/user/loginUser", signIn);
 
 // Llamando ruta para modificar las contraseña de los usuarios
-app.patch("/api/user/modificarUser/:id", isAuthSecret, signUpdate);
+app.patch("/api/user/modificarUser/:id", signUpdate);
 
 // llamando ruta para eliminar los usuario que se crear su token
-app.delete("/api/user/deleteUser/:id", isAuthSecret, signDelete);
+app.delete("/api/user/deleteUser/:id", signDelete);
 
 // pagina para cuando no se encuentre los datos de las paginas
 app.use((req, res, next) => {

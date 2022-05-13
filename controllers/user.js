@@ -20,26 +20,61 @@ function verUserId(req, res) {
 //Ruta para crear un usuario nuevo y token
 async function signUp(req, res) {
   const passwordNormal = req.body.password;
-  const userToken = {
-    email: req.body.email,
-    name: req.body.name,
-    password: await bcryptjs.hash(passwordNormal, 8),
-  };
+  const lista = {};
 
   const user = new UserNew({
     email: req.body.email,
     name: req.body.name,
     password: await bcryptjs.hash(passwordNormal, 8),
-    token: createToken(userToken),
+    favoriteMovies: {
+      titulo: req.body.favoriteMovies.titulo,
+      genero: req.body.favoriteMovies.genero,
+      Director: req.body.favoriteMovies.Director,
+      year: req.body.favoriteMovies.year,
+      Reparto: req.body.favoriteMovies.Reparto,
+      img: req.body.favoriteMovies.img,
+      video: req.body.favoriteMovies.video,
+      time: req.body.favoriteMovies.time,
+    },
   });
 
-  user.save((err) => {
+  user.save((err, datos) => {
     if (err) {
       res.status(500).send({ message: `Error al crear el usuario ${err}` });
     }
 
-    return res.status(200).send({ token: createToken(userToken) });
+    return res
+      .status(200)
+      .send({ mensaje: "Cuenta creada corectamente", nuevaCuenta: datos });
   });
+}
+
+async function addMovieToMyList(req, res) {
+  const id = req.params.id;
+  const moviesNew = {
+    titulo: req.body.titulo,
+    genero: req.body.genero,
+    Director: req.body.Director,
+    year: req.body.year,
+    Reparto: req.body.Reparto,
+    img: req.body.img,
+    video: req.body.video,
+    time: req.body.time,
+  };
+  
+  UserNew.findByIdAndUpdate(
+    id,
+    { $push: { favoriteMovies: moviesNew } },
+    (err, user) => {
+      if (err) {
+        res.status(500).send({ message: `Error al crear el usuario ${err}` });
+      }
+
+      return res
+        .status(200)
+        .send({ mensaje: "Cuenta creada corectamente", moviesNew: user });
+    }
+  );
 }
 
 // Ruta para ver si esta logeado en la api
@@ -78,7 +113,7 @@ async function signDelete(req, res) {
     } else {
       res.json({
         estado: false,
-        mensaje: `Archivo no eliminado`,
+        mensaje: `No eliminado`,
       });
     }
   } catch (error) {
@@ -121,4 +156,5 @@ module.exports = {
   signIn,
   signDelete,
   signUpdate,
+  addMovieToMyList,
 };

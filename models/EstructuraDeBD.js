@@ -10,17 +10,27 @@ const peliculaSchema = new Schema({
   Reparto: { type: String, unique: true },
   img: { type: String, unique: true },
   video: { type: String, unique: true },
-  time: String
+  time: String,
 });
 
 // Estructura de como se van introducir los datos en usuarios
-const userSchema = new Schema({
+const userSchema = Schema({
   email: { type: String, unique: true, lowercase: true },
   name: String,
   password: { type: String },
-  token: { type: String },
   signupDate: { type: Date, default: Date.now() },
-  favoriteMovie: { type: peliculaSchema },
+  favoriteMovies: [
+    {
+      titulo: { type: String, unique: true },
+      genero: String,
+      Director: String,
+      year: Date,
+      Reparto: { type: String, unique: true },
+      img: { type: String, unique: true },
+      video: { type: String, unique: true },
+      time: String,
+    },
+  ],
 });
 
 const peliculaVistasSchema = new Schema({
@@ -33,7 +43,7 @@ const peliculaVistasSchema = new Schema({
   video: { type: String, unique: true },
   descripcion: { type: String, unique: true },
   duracion: String,
-  time: String
+  time: String,
 });
 
 // crear el modelo
