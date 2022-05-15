@@ -81,7 +81,7 @@ app.post("/api/user/crearUser", signUp);
 app.post("/api/user/addMovieList/:id", addMovieToMyList);
 
 // llamando ruta para logearte a ver si tienes una cuenta creada
-app.get("/api/user/loginUser", signIn);
+app.post("/api/user/loginUser", signIn);
 
 // Llamando ruta para modificar las contraseña de los usuarios
 app.patch("/api/user/modificarUser/:id", signUpdate);
