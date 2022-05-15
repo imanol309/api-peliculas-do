@@ -17,7 +17,7 @@ function verUserId(req, res) {
     .catch((error) => res.json({ message: error }));
 }
 
-//Ruta para crear un usuario nuevo y token
+//Ruta para crear un usuario nuevo 
 async function signUp(req, res) {
   const passwordNormal = req.body.password;
   const user = new UserNew({
@@ -43,10 +43,11 @@ async function signUp(req, res) {
 
     return res
       .status(200)
-      .send({ mensaje: "Cuenta creada corectamente", nuevaCuenta: datos });
+      .send({ mensaje: "Cuenta creada corectamente"});
   });
 }
 
+//Ruta para agregar una nueva pelicula a la lista de pelicula favoritas
 async function addMovieToMyList(req, res) {
   const id = req.params.id;
   const moviesNew = {
@@ -79,7 +80,7 @@ async function addMovieToMyList(req, res) {
 async function signIn(req, res) {
   await UserNew.findOne({ email: req.body.email }, (err, user) => {
     if (err) {
-      return res.status(500).send({ message: err });
+      return res.status(500).send({ message: 'Hubo un error vuelve a intentarlo', error: err });
     }
     if (!user.email) {
       return res.status(404).send({ message: "Tu usuario no exicte en la BD" });
@@ -128,7 +129,6 @@ async function signUpdate(req, res) {
     req.body,
     { useFindAndModify: false },
     function (err, docs) {
-      console.log(docs);
       if (err) {
         res.json({
           estado: false,

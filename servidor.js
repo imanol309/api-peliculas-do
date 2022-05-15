@@ -84,10 +84,10 @@ app.post("/api/user/addMovieList/:id", addMovieToMyList);
 app.post("/api/user/loginUser", signIn);
 
 // Llamando ruta para modificar las contraseña de los usuarios
-app.patch("/api/user/modificarUser/:id", signUpdate);
+app.patch("/api/user/modificarUser/:id", isAuthSecret ,signUpdate);
 
 // llamando ruta para eliminar los usuario que se crear su token
-app.delete("/api/user/deleteUser/:id", signDelete);
+app.delete("/api/user/deleteUser/:id", isAuthSecret, signDelete);
 
 // pagina para cuando no se encuentre los datos de las paginas
 app.use((req, res, next) => {
