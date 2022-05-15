@@ -59,7 +59,7 @@ async function addMovieToMyList(req, res) {
     video: req.body.video,
     time: req.body.time,
   };
-  
+
   UserNew.findByIdAndUpdate(
     id,
     { $push: { favoriteMovies: moviesNew } },
