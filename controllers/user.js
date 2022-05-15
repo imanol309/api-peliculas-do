@@ -20,8 +20,6 @@ function verUserId(req, res) {
 //Ruta para crear un usuario nuevo y token
 async function signUp(req, res) {
   const passwordNormal = req.body.password;
-  const lista = {};
-
   const user = new UserNew({
     email: req.body.email,
     name: req.body.name,
