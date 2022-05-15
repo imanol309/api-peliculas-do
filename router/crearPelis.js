@@ -1,9 +1,10 @@
 const express = require("express");
 const routerCrear = express.Router();
 const { Peliculas, PeliculasMVistas } = require("../models/EstructuraDeBD");
-const { isAuth } = require("../middlewares/auth");
+const { isAuth, isAuthSecret } = require("../middlewares/auth");
 
-routerCrear.post("/", isAuth, async (req, res) => {
+// RUTA PARA CREAR PELICULAS EN LA BASE DE DATOS
+routerCrear.post("/", isAuthSecret, async (req, res) => {
   const body = req.body;
   try {
     const mascotaDB = new Peliculas(body);
@@ -14,7 +15,8 @@ routerCrear.post("/", isAuth, async (req, res) => {
   }
 });
 
-routerCrear.post("/masVistas", isAuth, async (req, res) => {
+// RUTA PARA CREAR PELICULAS EN LA BASE DE DATOS DE LAS MAS VISTAS LISTA.
+routerCrear.post("/masVistas", isAuthSecret, async (req, res) => {
   const body = req.body;
   try {
     const mascotaDB = new PeliculasMVistas(body);

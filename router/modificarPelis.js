@@ -2,10 +2,10 @@
 const express = require("express");
 const routerModificar = express.Router();
 const { Peliculas, PeliculasMVistas } = require("../models/EstructuraDeBD");
-const { isAuth } = require("../middlewares/auth");
+const { isAuth, isAuthSecret } = require("../middlewares/auth");
 
 // TOMANDO UN ID PARA DESPUES BORRAR ESO DATOS DE LA BASE DE DATOS
-routerModificar.put("/:id", isAuth, (req, res) => {
+routerModificar.put("/:id", isAuthSecret, (req, res) => {
   const id = req.params.id;
   const body = req.body;
   Peliculas.findByIdAndUpdate(
@@ -31,7 +31,7 @@ routerModificar.put("/:id", isAuth, (req, res) => {
 });
 
 // TOMANDO UN ID PARA DESPUES EDITAR UN DATO EN EXPESIFICIO
-routerModificar.patch("/patch/:id", isAuth, (req, res) => {
+routerModificar.patch("/patch/:id", isAuthSecret, (req, res) => {
   const id = req.params.id;
   const body = req.body;
   Peliculas.findByIdAndUpdate(
