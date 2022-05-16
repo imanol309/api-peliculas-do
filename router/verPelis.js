@@ -43,6 +43,15 @@ routerVer.get("/titulo/:nombre", async (req, res) => {
     .catch((error) => res.json({ message: error }));
 });
 
+// RUTA PARA BUSCAR LA PELICULA POR EL NOMBRE DE LA PELI
+routerVer.get("/masVistas/titulo/:nombre", async (req, res) => {
+  const id = req.params.nombre;
+  const titulos = id.split("-").join(" ");
+  await PeliculasMVistas.findOne({ titulo: titulos })
+    .then((data) => res.json([data]))
+    .catch((error) => res.json({ message: error }));
+});
+
 // RUTA PARA BUSCAR LA PELICULA POR EL YEARS, PERO TIENE UN PEQUEÑO BUG(FALTA SOLUCIONAR)
 routerVer.get("/fecha/:years", async (req, res) => {
   const fecha = req.params.years;
