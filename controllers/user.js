@@ -82,16 +82,15 @@ async function signIn(req, res) {
         .status(500)
         .send({ message: "Hubo un error vuelve a intentarlo", error: err });
     }
-    if (!user.email) {
+    if (!user?.email) {
       return res.status(404).send({ message: "Tu usuario no exicte en la BD" });
     }
-    if (!bcryptjs.compareSync(req.body.password, user.password)) {
+    if (!bcryptjs.compareSync(req.body.password, user?.password)) {
       return res
         .status(404)
         .send({ message: "Tu contraseña no exicte en la BD" });
     }
 
-    req.user = user;
     res.status(200).send({
       message: "Te has logueado correctamente",
       DatosLogin: user,
