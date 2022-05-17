@@ -12,14 +12,13 @@ const {
   verUser,
   verUserId,
   signUpdate,
-  addMovieToMyList
+  addMovieToMyList,
 } = require("./controllers/user");
 const bodyParser = require("body-parser");
 const RateLimit = require("express-rate-limit");
 require("dotenv").config();
 const { isAuth, isAuthSecret } = require("./middlewares/auth");
 const cors = require("cors");
-
 
 // using the cors package to be able to configure who can make requests for this api
 app.use(
@@ -72,7 +71,7 @@ app.use("/api/modificarPelis", routerModificar, limiter);
 app.get("/api/user/verUser", isAuthSecret, verUser);
 
 // llamando ruta para ver el usuario por id
-app.get("/api/user/verUserId/:id", isAuthSecret ,verUserId);
+app.get("/api/user/verUserId/:id", isAuthSecret, verUserId);
 
 // llamando ruta para crear tu usuario para octener tu token propio
 app.post("/api/user/crearUser", signUp);
@@ -84,7 +83,7 @@ app.post("/api/user/addMovieList/:id", addMovieToMyList);
 app.post("/api/user/loginUser", signIn);
 
 // Llamando ruta para modificar las contraseña de los usuarios
-app.patch("/api/user/modificarUser/:id", isAuthSecret ,signUpdate);
+app.patch("/api/user/modificarUser/:id", isAuthSecret, signUpdate);
 
 // llamando ruta para eliminar los usuario que se crear su token
 app.delete("/api/user/deleteUser/:id", isAuthSecret, signDelete);

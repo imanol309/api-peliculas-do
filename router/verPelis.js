@@ -60,7 +60,6 @@ routerVer.get("/fecha/:years", async (req, res) => {
     .catch((error) => res.json({ message: error }));
 });
 
-
 // RUTA PARA BUSCAR LAS PELICULAS POR EL GENERO DE LA PELICULA
 routerVer.get("/genero/:nombre", async (req, res) => {
   const generos = req.params.nombre;
