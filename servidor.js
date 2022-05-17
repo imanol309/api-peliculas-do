@@ -21,11 +21,7 @@ const { isAuth, isAuthSecret } = require("./middlewares/auth");
 const cors = require("cors");
 
 // using the cors package to be able to configure who can make requests for this api
-app.use(
-  cors({
-    origin: ["http://localhost:8888", "https://films-do-ng.vercel.app"],
-  })
-);
+app.use(cors());
 
 // set up rate limiter: maximum of five requests per minute
 var limiter = RateLimit({
