@@ -27,7 +27,7 @@ const userSchema = Schema({
       year: Date,
       Reparto: { type: String, unique: true },
       img: { type: String, unique: true },
-      video: { type: String, unique: true },
+      video: { type: String },
       time: String,
     },
   ],
@@ -41,7 +41,7 @@ const peliculaVistasSchema = new Schema({
   Reparto: { type: String },
   img: { type: String, unique: true },
   video: { type: String, unique: true },
-  descripcion: { type: String, unique: true },
+  descripcion: { type: String },
   duracion: String,
   time: String,
 });
