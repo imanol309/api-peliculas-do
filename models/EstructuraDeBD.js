@@ -35,6 +35,7 @@ const userSchema = Schema({
   ],
 });
 
+// Estructura de como se van introducir los datos de las peliculas mas vistas
 const peliculaVistasSchema = new Schema({
   titulo: { type: String, unique: true },
   genero: String,
