@@ -11,6 +11,7 @@ const peliculaSchema = new Schema({
   img: { type: String, unique: true },
   video: { type: String },
   time: String,
+  descripcion: { type: String },
 });
 
 // Estructura de como se van introducir los datos en usuarios
@@ -29,6 +30,7 @@ const userSchema = Schema({
       img: { type: String, unique: true },
       video: { type: String },
       time: String,
+      descripcion: { type: String },
     },
   ],
 });
