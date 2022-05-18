@@ -9,7 +9,7 @@ const peliculaSchema = new Schema({
   year: Date,
   Reparto: { type: String, unique: true },
   img: { type: String, unique: true },
-  video: { type: String, unique: true },
+  video: { type: String },
   time: String,
 });
 
@@ -40,7 +40,7 @@ const peliculaVistasSchema = new Schema({
   year: Date,
   Reparto: { type: String },
   img: { type: String, unique: true },
-  video: { type: String, unique: true },
+  video: { type: String },
   descripcion: { type: String },
   duracion: String,
   time: String,
