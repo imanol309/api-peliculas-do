@@ -68,10 +68,9 @@ async function addMovieToMyList(req, res) {
       if (err) {
         res.status(500).send({ message: `Error al crear el usuario ${err}` });
       }
-
       return res
         .status(200)
-        .send({ mensaje: "Cuenta creada corectamente", moviesNew: user });
+        .send({ mensaje: "Pelicula agregda con exito", moviesNew: user });
     }
   );
 }
