@@ -22,6 +22,7 @@ const userSchema = Schema({
   signupDate: { type: Date, default: Date.now() },
   favoriteMovies: [
     {
+      _id: { type: String, unique: true },
       titulo: { type: String, unique: true },
       genero: String,
       Director: String,

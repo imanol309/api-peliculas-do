@@ -49,6 +49,7 @@ async function signUp(req, res) {
 async function addMovieToMyList(req, res) {
   const id = req.params.id;
   const moviesNew = {
+    _id: req.body._id,
     titulo: req.body.titulo,
     genero: req.body.genero,
     Director: req.body.Director,
@@ -57,6 +58,7 @@ async function addMovieToMyList(req, res) {
     img: req.body.img,
     video: req.body.video,
     time: req.body.time,
+    descripcion: req.body.descripcion
   };
 
   UserNew.findByIdAndUpdate(
