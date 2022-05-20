@@ -1,6 +1,7 @@
 const { UserNew } = require("../models/EstructuraDeBD");
 const { createToken } = require("../services/token");
 const bcryptjs = require("bcryptjs");
+const { ObjectId } = require("mongodb");
 
 // Ruta para ver usuarios
 function verUser(req, res) {
@@ -58,12 +59,12 @@ async function addMovieToMyList(req, res) {
     img: req.body.img,
     video: req.body.video,
     time: req.body.time,
-    descripcion: req.body.descripcion
+    descripcion: req.body.descripcion,
   };
 
   UserNew.findByIdAndUpdate(
     id,
-    { $push: { favoriteMovies: moviesNew } },
+    { $addToSet: { favoriteMovies: moviesNew } },
     (err, user) => {
       if (err) {
         res.status(500).send({ message: `Error al crear el usuario ${err}` });
@@ -71,6 +72,22 @@ async function addMovieToMyList(req, res) {
       return res
         .status(200)
         .send({ mensaje: "Pelicula agregda con exito", moviesNew: user });
+    }
+  );
+}
+
+// Ruta para eliminar los usuarios que no deseo
+async function DeleteMyList(req, res) {
+  const signDB = await UserNew.updateOne(
+    { _id: req.params.id},
+    { $pull: { favoriteMovies: { _id: req.body.id } } },
+    (err, user) => {
+      if (err) {
+        res.status(500).send({ message: `Error al crear el usuario ${err}` });
+      }
+      return res
+        .status(200)
+        .send({ mensaje: "Pelicula eliminada con exito", moviesNew: user });
     }
   );
 }
@@ -155,4 +172,5 @@ module.exports = {
   signDelete,
   signUpdate,
   addMovieToMyList,
+  DeleteMyList,
 };

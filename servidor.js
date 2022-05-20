@@ -13,6 +13,7 @@ const {
   verUserId,
   signUpdate,
   addMovieToMyList,
+  DeleteMyList
 } = require("./controllers/user");
 const bodyParser = require("body-parser");
 const RateLimit = require("express-rate-limit");
@@ -83,6 +84,9 @@ app.patch("/api/user/modificarUser/:id", isAuthSecret, signUpdate);
 
 // llamando ruta para eliminar los usuario que se crear su token
 app.delete("/api/user/deleteUser/:id", isAuthSecret, signDelete);
+
+// llamando ruta para eliminar las pelicula de tu lista de favorito
+app.put("/api/user/deleteaddMovieList/:id", DeleteMyList);
 
 // pagina para cuando no se encuentre los datos de las paginas
 app.use((req, res, next) => {
