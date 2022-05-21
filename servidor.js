@@ -54,11 +54,9 @@ app.use("/api/verPelis", routerVer);
 // llamando ruta de agregar nuevas peliculas
 app.use("/api/crearPelis", routerCrear);
 
-// apply rate limiter to all requests
 // llamando ruta de eliminar peliculas
 app.use("/api/eliminarPelis", routerDelete, limiter);
 
-// apply rate limiter to all requests
 // llamado ruta de modificar peliculas
 app.use("/api/modificarPelis", routerModificar, limiter);
 
