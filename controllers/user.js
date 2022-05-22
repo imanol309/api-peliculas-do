@@ -25,24 +25,27 @@ async function signUp(req, res) {
     email: req.body.email,
     name: req.body.name,
     password: await bcryptjs.hash(passwordNormal, 8),
+    logo: req.body.logo,
     favoriteMovies: {
-      titulo: req.body.favoriteMovies.titulo,
-      genero: req.body.favoriteMovies.genero,
-      Director: req.body.favoriteMovies.Director,
-      year: req.body.favoriteMovies.year,
-      Reparto: req.body.favoriteMovies.Reparto,
-      img: req.body.favoriteMovies.img,
-      video: req.body.favoriteMovies.video,
-      time: req.body.favoriteMovies.time,
+      _id: req.body.favoriteMovies?.id,
+      titulo: req.body.favoriteMovies?.titulo,
+      genero: req.body.favoriteMovies?.genero,
+      Director: req.body.favoriteMovies?.Director,
+      year: req.body.favoriteMovies?.year,
+      Reparto: req.body.favoriteMovies?.Reparto,
+      img: req.body.favoriteMovies?.img,
+      video: req.body.favoriteMovies?.video,
+      time: req.body.favoriteMovies?.time,
+      descripcion: req.body.favoriteMovies?.descripcion
     },
   });
 
-  user.save((err, datos) => {
+  await user.save((err, datos) => {
     if (err) {
       res.status(500).send({ message: `Error al crear el usuario ${err}` });
     }
 
-    return res.status(200).send({ mensaje: "Cuenta creada corectamente" });
+    return res.status(200).send({ mensaje: "Cuenta creada corectamente", Datos: datos });
   });
 }
 
@@ -78,7 +81,7 @@ async function addMovieToMyList(req, res) {
 
 // Ruta para eliminar los usuarios que no deseo
 async function DeleteMyList(req, res) {
-  const signDB = await UserNew.updateOne(
+  await UserNew.updateOne(
     { _id: req.params.id},
     { $pull: { favoriteMovies: { _id: req.body.id } } },
     (err, user) => {

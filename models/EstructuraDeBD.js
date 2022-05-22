@@ -16,20 +16,27 @@ const peliculaSchema = new Schema({
 
 // Estructura de como se van introducir los datos en usuarios
 const userSchema = Schema({
-  email: { type: String, unique: true, lowercase: true },
+  email: {
+    type: String,
+    require: true,
+    index: true,
+    unique: true,
+    sparse: true,
+  },
   name: String,
   password: { type: String },
+  logo: { type: String },
   signupDate: { type: Date, default: Date.now() },
   favoriteMovies: [
     {
-      _id: { type: String, unique: true },
-      titulo: { type: String, unique: true },
+      _id: { type: String },
+      titulo: { type: String },
       genero: { type: String },
       Director: { type: String },
       year: Date,
-      Reparto: { type: String, unique: true },
-      img: { type: String, unique: true },
-      video:{ type: String, unique: true },
+      Reparto: { type: String },
+      img: { type: String },
+      video: { type: String },
       time: String,
       descripcion: { type: String },
     },
