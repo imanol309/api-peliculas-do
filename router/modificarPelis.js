@@ -11,6 +11,7 @@ routerModificar.put("/:id", isAuthSecret, (req, res) => {
   Peliculas.findByIdAndUpdate(
     id,
     body,
+    {new: true},
     { useFindAndModify: false },
     function (err, docs) {
       if (err) {
@@ -37,6 +38,7 @@ routerModificar.patch("/patch/:id", isAuthSecret, (req, res) => {
   Peliculas.findByIdAndUpdate(
     id,
     body,
+    {new: true},
     { useFindAndModify: false },
     function (err, docs) {
       if (err) {
@@ -63,6 +65,7 @@ routerModificar.put("/masVistas/:id", isAuth, (req, res) => {
   PeliculasMVistas.findByIdAndUpdate(
     id,
     body,
+    {new: true},
     { useFindAndModify: false },
     function (err, docs) {
       if (err) {
@@ -89,6 +92,7 @@ routerModificar.patch("/masVistas/patch/:id", isAuth, (req, res) => {
   PeliculasMVistas.findByIdAndUpdate(
     id,
     body,
+    {new: true},
     { useFindAndModify: false },
     function (err, docs) {
       if (err) {

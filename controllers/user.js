@@ -136,6 +136,7 @@ async function signUpdate(req, res) {
   UserNew.findByIdAndUpdate(
     id,
     req.body,
+    {new: true},
     { useFindAndModify: false },
     function (err, docs) {
       if (err) {
