@@ -26,18 +26,6 @@ async function signUp(req, res) {
     name: req.body.name,
     password: await bcryptjs.hash(passwordNormal, 8),
     logo: req.body.logo,
-    favoriteMovies: {
-      _id: req.body.favoriteMovies?.id,
-      titulo: req.body.favoriteMovies?.titulo,
-      genero: req.body.favoriteMovies?.genero,
-      Director: req.body.favoriteMovies?.Director,
-      year: req.body.favoriteMovies?.year,
-      Reparto: req.body.favoriteMovies?.Reparto,
-      img: req.body.favoriteMovies?.img,
-      video: req.body.favoriteMovies?.video,
-      time: req.body.favoriteMovies?.time,
-      descripcion: req.body.favoriteMovies?.descripcion
-    },
   });
 
   await user.save((err, datos) => {
@@ -66,8 +54,9 @@ async function addMovieToMyList(req, res) {
   };
 
   UserNew.findByIdAndUpdate(
-    id,
+    {_id: id},
     { $addToSet: { favoriteMovies: moviesNew } },
+    {new: true},
     (err, user) => {
       if (err) {
         res.status(500).send({ message: `Error al crear el usuario ${err}` });
