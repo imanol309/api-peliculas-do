@@ -68,7 +68,7 @@ async function addMovieToMyList(req, res) {
   );
 }
 
-// Ruta para eliminar los usuarios que no deseo
+// Ruta para eliminar las peliculas de mi lista de favoritos
 async function DeleteMyList(req, res) {
   await UserNew.updateOne(
     { _id: req.params.id},

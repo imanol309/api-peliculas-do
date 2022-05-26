@@ -11,7 +11,6 @@ routerModificar.put("/:id", isAuthSecret, (req, res) => {
   Peliculas.findByIdAndUpdate(
     id,
     body,
-    {new: true},
     { useFindAndModify: false },
     function (err, docs) {
       if (err) {
@@ -38,7 +37,6 @@ routerModificar.patch("/patch/:id", isAuthSecret, (req, res) => {
   Peliculas.findByIdAndUpdate(
     id,
     body,
-    {new: true},
     { useFindAndModify: false },
     function (err, docs) {
       if (err) {
@@ -59,13 +57,12 @@ routerModificar.patch("/patch/:id", isAuthSecret, (req, res) => {
 });
 
 // TOMANDO UN ID PARA DESPUES BORRAR ESO DATOS DE LA BASE DE DATOS
-routerModificar.put("/masVistas/:id", isAuth, (req, res) => {
+routerModificar.put("/masVistas/:id", isAuthSecret, (req, res) => {
   const id = req.params.id;
   const body = req.body;
   PeliculasMVistas.findByIdAndUpdate(
     id,
     body,
-    {new: true},
     { useFindAndModify: false },
     function (err, docs) {
       if (err) {
@@ -86,13 +83,12 @@ routerModificar.put("/masVistas/:id", isAuth, (req, res) => {
 });
 
 // TOMANDO UN ID PARA DESPUES EDITAR UN DATO EN EXPESIFICIO
-routerModificar.patch("/masVistas/patch/:id", isAuth, (req, res) => {
+routerModificar.patch("/masVistas/patch/:id", isAuthSecret, (req, res) => {
   const id = req.params.id;
   const body = req.body;
   PeliculasMVistas.findByIdAndUpdate(
     id,
     body,
-    {new: true},
     { useFindAndModify: false },
     function (err, docs) {
       if (err) {
