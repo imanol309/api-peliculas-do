@@ -33,7 +33,7 @@ async function signUp(req, res) {
       res.status(500).send({ message: `Error al crear el usuario ${err}` });
     }
 
-    return res.status(200).send({ mensaje: "Cuenta creada corectamente", Datos: datos });
+    return res.status(200).send({ mensaje: "Cuenta creada correctamente", Datos: datos });
   });
 }
 
@@ -94,12 +94,12 @@ async function signIn(req, res) {
         .send({ message: "Hubo un error vuelve a intentarlo", error: err });
     }
     if (!user?.email) {
-      return res.status(404).send({ message: "Tu usuario no exicte en la BD" });
+      return res.status(404).send({ message: "Tu usuario no existe en la BD" });
     }
     if (!bcryptjs.compareSync(req.body.password, user?.password)) {
       return res
         .status(404)
-        .send({ message: "Tu contraseña no exicte en la BD" });
+        .send({ message: "Tu contraseña no existe en la BD" });
     }
 
     res.status(200).send({
