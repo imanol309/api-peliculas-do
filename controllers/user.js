@@ -70,9 +70,10 @@ async function addMovieToMyList(req, res) {
 
 // Ruta para eliminar las peliculas de mi lista de favoritos
 async function DeleteMyList(req, res) {
-  await UserNew.updateOne(
+  await UserNew.findByIdAndUpdate(
     { _id: req.params.id},
     { $pull: { favoriteMovies: { _id: req.body.id } } },
+    {new: true},
     (err, user) => {
       if (err) {
         res.status(500).send({ message: `Error al crear el usuario ${err}` });
