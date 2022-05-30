@@ -3,12 +3,12 @@ const Schema = mongoose.Schema;
 
 // Extructura de como se van a introducir los datos en peliculas
 const peliculaSchema = new Schema({
-  titulo: { type: String, unique: true },
+  titulo: { type: String },
   genero: String,
   Director: String,
   year: Date,
-  Reparto: { type: String, unique: true },
-  img: { type: String, unique: true },
+  Reparto: { type: String },
+  img: { type: String },
   video: { type: String },
   time: String,
   descripcion: { type: String },
@@ -58,7 +58,7 @@ const peliculaVistasSchema = new Schema({
 });
 
 // crear el modelo
-const Peliculas = mongoose.model("infodominicanas", peliculaSchema);
+const Peliculas = mongoose.model("peliculasmarvel", peliculaSchema);
 const PeliculasMVistas = mongoose.model(
   "masvitasdominicanos",
   peliculaVistasSchema
