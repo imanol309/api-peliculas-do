@@ -39,7 +39,7 @@ routerVer.get("/titulo/:nombre", async (req, res) => {
   const id = req.params.nombre;
   const titulos = id.split("-").join(" ");
   await Peliculas.find({ titulo: { $regex: titulos, $options: "i" } })
-    .then((data) => res.json([data]))
+    .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
 
@@ -48,7 +48,7 @@ routerVer.get("/masVistas/titulo/:nombre", async (req, res) => {
   const id = req.params.nombre;
   const titulos = id.split("-").join(" ");
   await PeliculasMVistas.find({ titulo: { $regex: titulos, $options: "i" } })
-    .then((data) => res.json([data]))
+    .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
 
