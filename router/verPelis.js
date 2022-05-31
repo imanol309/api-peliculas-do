@@ -38,7 +38,7 @@ routerVer.get("/masVistas/:id", async (req, res) => {
 routerVer.get("/titulo/:nombre", async (req, res) => {
   const id = req.params.nombre;
   const titulos = id.split("-").join(" ");
-  await Peliculas.findOne({ titulo: titulos })
+  await Peliculas.find({ titulo: { $regex: titulos, $options: "i" } })
     .then((data) => res.json([data]))
     .catch((error) => res.json({ message: error }));
 });
@@ -47,7 +47,7 @@ routerVer.get("/titulo/:nombre", async (req, res) => {
 routerVer.get("/masVistas/titulo/:nombre", async (req, res) => {
   const id = req.params.nombre;
   const titulos = id.split("-").join(" ");
-  await PeliculasMVistas.findOne({ titulo: titulos })
+  await PeliculasMVistas.find({ titulo: { $regex: titulos, $options: "i" } })
     .then((data) => res.json([data]))
     .catch((error) => res.json({ message: error }));
 });
