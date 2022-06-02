@@ -38,7 +38,7 @@ routerVer.get("/masVistas/:id", async (req, res) => {
 routerVer.get("/titulo/:nombre", async (req, res) => {
   const titulos = req.params.nombre;
   await Peliculas.find({ titulo: { $regex: titulos, $options: "i" } })
-    .then((data) => res.json([data]))
+    .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
 
