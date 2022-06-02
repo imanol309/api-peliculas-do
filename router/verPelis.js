@@ -22,7 +22,7 @@ routerVer.get(`/masVistas`, (req, res) => {
 routerVer.get("/:id", async (req, res) => {
   const id = req.params.id;
   await Peliculas.findOne({ _id: id })
-    .then((data) => res.json(data))
+    .then((data) => res.json([data]))
     .catch((error) => res.json({ message: error }));
 });
 
@@ -30,7 +30,7 @@ routerVer.get("/:id", async (req, res) => {
 routerVer.get("/masVistas/:id", async (req, res) => {
   const id = req.params.id;
   await PeliculasMVistas.findOne({ _id: id })
-    .then((data) => res.json(data))
+    .then((data) => res.json([data]))
     .catch((error) => res.json({ message: error }));
 });
 
