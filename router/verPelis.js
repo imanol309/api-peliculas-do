@@ -36,17 +36,15 @@ routerVer.get("/masVistas/:id", async (req, res) => {
 
 // RUTA PARA BUSCAR LA PELICULA POR EL NOMBRE DE LA PELI
 routerVer.get("/titulo/:nombre", async (req, res) => {
-  const id = req.params.nombre;
-  const titulos = id.split("-").join(" ");
+  const titulos = req.params.nombre;
   await Peliculas.find({ titulo: { $regex: titulos, $options: "i" } })
-    .then((data) => res.json(data))
+    .then((data) => res.json([data]))
     .catch((error) => res.json({ message: error }));
 });
 
 // RUTA PARA BUSCAR LA PELICULA POR EL NOMBRE DE LA PELI
 routerVer.get("/masVistas/titulo/:nombre", async (req, res) => {
-  const id = req.params.nombre;
-  const titulos = id.split("-").join(" ");
+  const titulos = req.params.nombre;
   await PeliculasMVistas.find({ titulo: { $regex: titulos, $options: "i" } })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
