@@ -1,7 +1,7 @@
 const express = require("express");
 const routerCrear = express.Router();
-const { Peliculas, PeliculasMVistas } = require("../models/EstructuraDeBD");
-const { isAuth, isAuthSecret } = require("../middlewares/auth");
+const { Peliculas, PeliculasMVistas } = require("EstructuraDeBD");
+const { isAuthSecret } = require("../middlewares/auth");
 
 // RUTA PARA CREAR PELICULAS EN LA BASE DE DATOS
 routerCrear.post("/", isAuthSecret, async (req, res) => {
@@ -23,7 +23,7 @@ routerCrear.post("/masVistas", isAuthSecret, async (req, res) => {
     await mascotaDB.save();
     res.json({ message: "Dato guardado con exito", status: 200 });
   } catch (error) {
-    console.log(error);
+    res.json({ message: error, status: 500 });
   }
 });
 
