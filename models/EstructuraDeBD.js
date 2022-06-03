@@ -60,7 +60,7 @@ const peliculaVistasSchema = new Schema({
 
 // crear el modelo
 const Peliculas = mongoose.model("peliculasmarvels", peliculaSchema);
-const PeliculasMVistas = mongoose.model("masvistamarvel", peliculaVistasSchema);
+const PeliculasMVistas = mongoose.model("masvistasmarvels", peliculaVistasSchema);
 const UserNew = mongoose.model("userdominicanos", userSchema);
 
 module.exports = {
