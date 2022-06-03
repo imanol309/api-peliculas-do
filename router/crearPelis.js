@@ -1,6 +1,6 @@
 const express = require("express");
 const routerCrear = express.Router();
-const { Peliculas, PeliculasMVistas } = require("EstructuraDeBD");
+const { Peliculas, PeliculasMVistas } = require("../models/EstructuraDeBD");
 const { isAuthSecret } = require("../middlewares/auth");
 
 // RUTA PARA CREAR PELICULAS EN LA BASE DE DATOS

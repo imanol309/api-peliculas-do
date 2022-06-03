@@ -1,6 +1,6 @@
 const express = require("express");
 const routerVer = express.Router();
-const { Peliculas, PeliculasMVistas } = require("EstructuraDeBD");
+const { Peliculas, PeliculasMVistas } = require("../models/EstructuraDeBD");
 
 // Decir que pagina se va enviar al servidor y los datos
 

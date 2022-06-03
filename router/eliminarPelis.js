@@ -1,7 +1,7 @@
 // LLAMADNO ALGUNOS DE NPM QUE VOY A UTILIZAR
 const express = require("express");
 const routerDelete = express.Router();
-const { Peliculas, PeliculasMVistas } = require("EstructuraDeBD");
+const { Peliculas, PeliculasMVistas } = require("../models/EstructuraDeBD");
 const { isAuth, isAuthSecret } = require("../middlewares/auth");
 
 // TOMANDO UN ID PARA DESPUES BORRAR ESO DATOS DE LA BASE DE DATOS

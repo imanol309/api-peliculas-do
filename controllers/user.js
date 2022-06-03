@@ -1,4 +1,4 @@
-const { UserNew } = require("EstructuraDeBD");
+const { UserNew } = require("../models/EstructuraDeBD");
 const { createToken } = require("../services/token");
 const bcryptjs = require("bcryptjs");
 const { ObjectId } = require("mongodb");
