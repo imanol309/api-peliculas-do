@@ -27,7 +27,7 @@ app.use(cors());
 // set up rate limiter: maximum of five requests per minute
 var limiter = RateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
-  max: 1000,
+  max: 2000,
 });
 
 // parse application/x-www-form-urlencoded

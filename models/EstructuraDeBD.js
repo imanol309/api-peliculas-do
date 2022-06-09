@@ -12,6 +12,22 @@ const peliculaSchema = new Schema({
   video: { type: String },
   time: String,
   descripcion: { type: String },
+  comments:[
+    {
+      _id: { type: String },
+      email: {
+        type: String,
+        require: true,
+        index: true,
+        unique: true,
+        sparse: true,
+      },
+      name: String,
+      logo: { type: String },
+      signupDate: { type: Date, default: Date.now() },
+      message: { type: String },
+    },
+  ],
 });
 
 // Estructura de como se van introducir los datos en usuarios

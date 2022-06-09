@@ -59,7 +59,7 @@ async function addMovieToMyList(req, res) {
     {new: true},
     (err, user) => {
       if (err) {
-        res.status(500).send({ message: `Error al crear el usuario ${err}` });
+        res.status(500).send({ message: `Error al agregar una pelicula a tu lista de favorita ${err}` });
       }
       return res
         .status(200)

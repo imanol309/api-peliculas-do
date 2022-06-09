@@ -56,6 +56,34 @@ routerModificar.patch("/patch/:id", isAuthSecret, (req, res) => {
   );
 });
 
+//Ruta para agregar una nueva pelicula a la lista de pelicula favoritas
+routerModificar.patch("/comments/patch/:id", isAuthSecret, (req, res) => {
+  const id = req.params.id;
+  const commentsNew = {
+    _id: req.body._id,
+    email: req.body.email,
+    name: req.body.name,
+    logo: req.body.logo,
+    message: req.body.message,
+  };
+
+  Peliculas.findByIdAndUpdate(
+    { _id: id },
+    { $addToSet: { comments: commentsNew } },
+    { new: true },
+    (err, user) => {
+      if (err) {
+        res.status(500).send({
+          message: `Error al agregar un comentario en la pelicula ${err}`,
+        });
+      }
+      return res
+        .status(200)
+        .send({ mensaje: "Comentario agregda con exito", commentsNew: user });
+    }
+  );
+});
+
 // TOMANDO UN ID PARA DESPUES BORRAR ESO DATOS DE LA BASE DE DATOS
 routerModificar.put("/masVistas/:id", isAuthSecret, (req, res) => {
   const id = req.params.id;
