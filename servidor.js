@@ -58,7 +58,7 @@ app.use("/api/crearPelis", routerCrear);
 app.use("/api/eliminarPelis", routerDelete, limiter);
 
 // llamado ruta de modificar peliculas
-app.use("/api/modificarPelis", routerModificar, limiter);
+app.use("/api/modificarPelis", routerModificar );
 
 // LOS ENDPOINT para los usuarios logeados
 
