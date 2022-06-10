@@ -12,16 +12,9 @@ const peliculaSchema = new Schema({
   video: { type: String },
   time: String,
   descripcion: { type: String },
-  comments:[
+  comments: [
     {
-      _id: { type: String },
-      email: {
-        type: String,
-        require: true,
-        index: true,
-        unique: true,
-        sparse: true,
-      },
+      email: { type: String },
       name: String,
       logo: { type: String },
       signupDate: { type: Date, default: Date.now() },
@@ -76,7 +69,10 @@ const peliculaVistasSchema = new Schema({
 
 // crear el modelo
 const Peliculas = mongoose.model("peliculasmarvels", peliculaSchema);
-const PeliculasMVistas = mongoose.model("masvistasmarvels", peliculaVistasSchema);
+const PeliculasMVistas = mongoose.model(
+  "masvistasmarvels",
+  peliculaVistasSchema
+);
 const UserNew = mongoose.model("userdominicanos", userSchema);
 
 module.exports = {

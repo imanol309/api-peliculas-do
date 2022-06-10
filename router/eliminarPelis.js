@@ -25,6 +25,22 @@ routerDelete.delete("/:id", isAuthSecret, async (req, res) => {
   }
 });
 
+routerDelete.delete("/comments/:id", isAuthSecret, async (req, res) => {
+  await Peliculas.findByIdAndUpdate(
+    { _id: req.params.id },
+    { $pull: { comments: { _id: req.body.id } } },
+    { new: true },
+    (err, user) => {
+      if (err) {
+        res.status(500).send({ message: `Error al crear el usuario ${err}` });
+      }
+      return res
+        .status(200)
+        .send({ mensaje: "Pelicula eliminada con exito", moviesNew: user });
+    }
+  );
+});
+
 // TOMANDO UN ID PARA DESPUES BORRAR ESO DATOS DE LA BASE DE DATOS DE LAS PELICULAS MAS VISTAS
 routerDelete.delete("/masVistas/:id", isAuthSecret, async (req, res) => {
   const id = req.params.id;
