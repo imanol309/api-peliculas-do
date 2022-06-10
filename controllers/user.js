@@ -61,11 +61,9 @@ async function addMovieToMyList(req, res) {
     { new: true },
     (err, user) => {
       if (err) {
-        res
-          .status(500)
-          .send({
-            message: `Error al agregar una pelicula a tu lista de favorita ${err}`,
-          });
+        res.status(500).send({
+          message: `Error al agregar una pelicula a tu lista de favorita ${err}`,
+        });
       }
       return res
         .status(200)
@@ -82,11 +80,9 @@ async function DeleteMyList(req, res) {
     { new: true },
     (err, user) => {
       if (err) {
-        res
-          .status(500)
-          .send({
-            message: `Error al eliminar la pelicula de mis favoritos ${err}`,
-          });
+        res.status(500).send({
+          message: `Error al eliminar la pelicula de mis favoritos ${err}`,
+        });
       }
       return res
         .status(200)
