@@ -33,7 +33,9 @@ async function signUp(req, res) {
       res.status(500).send({ message: `Error al crear el usuario ${err}` });
     }
 
-    return res.status(200).send({ mensaje: "Cuenta creada correctamente", Datos: datos });
+    return res
+      .status(200)
+      .send({ mensaje: "Cuenta creada correctamente", Datos: datos });
   });
 }
 
@@ -54,12 +56,16 @@ async function addMovieToMyList(req, res) {
   };
 
   UserNew.findByIdAndUpdate(
-    {_id: id},
+    { _id: id },
     { $addToSet: { favoriteMovies: moviesNew } },
-    {new: true},
+    { new: true },
     (err, user) => {
       if (err) {
-        res.status(500).send({ message: `Error al agregar una pelicula a tu lista de favorita ${err}` });
+        res
+          .status(500)
+          .send({
+            message: `Error al agregar una pelicula a tu lista de favorita ${err}`,
+          });
       }
       return res
         .status(200)
@@ -71,12 +77,16 @@ async function addMovieToMyList(req, res) {
 // Ruta para eliminar las peliculas de mi lista de favoritos
 async function DeleteMyList(req, res) {
   await UserNew.findByIdAndUpdate(
-    { _id: req.params.id},
+    { _id: req.params.id },
     { $pull: { favoriteMovies: { _id: req.body.id } } },
-    {new: true},
+    { new: true },
     (err, user) => {
       if (err) {
-        res.status(500).send({ message: `Error al eliminar la pelicula de mis favoritos ${err}` });
+        res
+          .status(500)
+          .send({
+            message: `Error al eliminar la pelicula de mis favoritos ${err}`,
+          });
       }
       return res
         .status(200)
@@ -137,7 +147,7 @@ async function signUpdate(req, res) {
   UserNew.findByIdAndUpdate(
     id,
     req.body,
-    {new: true},
+    { new: true },
     { useFindAndModify: false },
     function (err, docs) {
       if (err) {

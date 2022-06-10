@@ -32,7 +32,9 @@ routerDelete.patch("/comments/:id", isAuthSecret, async (req, res) => {
     { new: true },
     (err, user) => {
       if (err) {
-        res.status(500).send({ message: `Error al eliminar el comentario ${err}` });
+        res
+          .status(500)
+          .send({ message: `Error al eliminar el comentario ${err}` });
       }
       return res
         .status(200)

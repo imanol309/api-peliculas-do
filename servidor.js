@@ -13,7 +13,7 @@ const {
   verUserId,
   signUpdate,
   addMovieToMyList,
-  DeleteMyList
+  DeleteMyList,
 } = require("./controllers/user");
 const bodyParser = require("body-parser");
 const RateLimit = require("express-rate-limit");
@@ -58,7 +58,7 @@ app.use("/api/crearPelis", routerCrear);
 app.use("/api/eliminarPelis", routerDelete, limiter);
 
 // llamado ruta de modificar peliculas
-app.use("/api/modificarPelis", routerModificar );
+app.use("/api/modificarPelis", routerModificar);
 
 // LOS ENDPOINT para los usuarios logeados
 
