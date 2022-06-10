@@ -14,7 +14,7 @@ const peliculaSchema = new Schema({
   descripcion: { type: String },
   comments: [
     {
-      email: { type: String },
+      emailUser: { type: String },
       name: String,
       logo: { type: String },
       signupDate: { type: Date, default: Date.now() },

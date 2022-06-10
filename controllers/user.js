@@ -76,7 +76,7 @@ async function DeleteMyList(req, res) {
     {new: true},
     (err, user) => {
       if (err) {
-        res.status(500).send({ message: `Error al crear el usuario ${err}` });
+        res.status(500).send({ message: `Error al eliminar la pelicula de mis favoritos ${err}` });
       }
       return res
         .status(200)

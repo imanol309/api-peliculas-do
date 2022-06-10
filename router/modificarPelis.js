@@ -60,7 +60,7 @@ routerModificar.patch("/patch/:id", isAuthSecret, (req, res) => {
 routerModificar.patch("/comments/patch/:id", isAuthSecret, (req, res) => {
   const id = req.params.id;
   const commentsNew = {
-    email: req.body.email,
+    emailUser: req.body.email,
     name: req.body.name,
     logo: req.body.logo,
     message: req.body.message,
