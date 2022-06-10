@@ -25,14 +25,14 @@ routerDelete.delete("/:id", isAuthSecret, async (req, res) => {
   }
 });
 
-routerDelete.delete("/comments/:id", isAuthSecret, async (req, res) => {
+routerDelete.patch("/comments/:id", isAuthSecret, async (req, res) => {
   await Peliculas.findByIdAndUpdate(
     { _id: req.params.id },
     { $pull: { comments: { _id: req.body.id } } },
     { new: true },
     (err, user) => {
       if (err) {
-        res.status(500).send({ message: `Error al crear el usuario ${err}` });
+        res.status(500).send({ message: `Error al eliminar el comentario ${err}` });
       }
       return res
         .status(200)
