@@ -45,7 +45,7 @@ mongoose
   .then(() => console.log(`base de datos conectada`))
   .catch((e) => console.log(`error en la base de datos`, e));
 
-// Carpeta estatica para tener el css y js
+// Carpeta estatica para ver la pagina principal 
 app.use(express.static(__dirname + `/public`));
 
 // llamando ruta de ver la informacion de la pelicula
@@ -86,7 +86,7 @@ app.delete("/api/user/deleteUser/:id", isAuthSecret, signDelete);
 // llamando ruta para eliminar las pelicula de tu lista de favorito
 app.put("/api/user/deleteaddMovieList/:id", DeleteMyList);
 
-// pagina para cuando no se encuentre los datos de las paginas
+// Pagina para cuando no se encuentre los datos de las paginas
 app.use((req, res, next) => {
   res.status(404).render(`404`);
 });
