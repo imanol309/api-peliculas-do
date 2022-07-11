@@ -13,7 +13,7 @@
     "express-rate-limit": "^6.4.0",
     "jsonwebtoken": "^8.5.1",
     "jwt-simple": "^0.5.6",
-    "moment": "^2.29.2",
+    "moment": "^2.29.4",
     "mongodb": "^4.2.2",
     "mongoose": "^5.12.9",
     "morgan": "^1.10.0",
