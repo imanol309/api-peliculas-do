@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const morgan =  require("morgan")
 const app = express();
 const { routerVer } = require("./router/verPelis");
 const { routerModificar } = require("./router/modificarPelis");
@@ -23,6 +24,9 @@ const cors = require("cors");
 
 // using the cors package to be able to configure who can make requests for this api
 app.use(cors());
+
+// Usando morgan para ver todas peticiones que hace mi servidor
+app.use(morgan('dev'))
 
 // set up rate limiter: maximum of five requests per minute
 var limiter = RateLimit({
