@@ -12,6 +12,7 @@ const peliculaSchema = new Schema({
   video: { type: String },
   time: String,
   descripcion: { type: String },
+  type: { type: String },
   comments: [
     {
       emailUser: { type: String },
@@ -65,6 +66,16 @@ const peliculaVistasSchema = new Schema({
   time: String,
   descripcion: { type: String },
   recaudacion: { type: String },
+  type: { type: String },
+  comments: [
+    {
+      emailUser: { type: String },
+      name: String,
+      logo: { type: String },
+      signupDate: { type: Date, default: Date.now() },
+      message: { type: String },
+    },
+  ],
 });
 
 // crear el modelo

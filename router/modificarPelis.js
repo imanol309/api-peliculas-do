@@ -135,6 +135,44 @@ routerModificar.patch("/masVistas/patch/:id", isAuthSecret, (req, res) => {
   );
 });
 
+routerModificar.put("/modificarTodoBD", isAuthSecret, async (req, res) => {
+  const bodyType = req.body.type;
+  await Peliculas.updateMany({}, { type: bodyType }, function (err, docs) {
+    if (err) {
+      res.json({
+        estado: false,
+        mensaje: "Datos no se pudieron editar",
+        error: err,
+      });
+    } else {
+      res.json({
+        estado: true,
+        mensaje: "Datos editados completamente",
+        docs: docs,
+      });
+    }
+  });
+});
+
+
+routerModificar.put("/modificarTodoBD/masVistas", isAuthSecret, async (req, res) => {
+  const bodyType = req.body.type;
+  await PeliculasMVistas.updateMany({}, { type: bodyType }, function (err, docs) {
+    if (err) {
+      res.json({
+        estado: false,
+        mensaje: "Datos no se pudieron editar",
+        error: err,
+      });
+    } else {
+      res.json({
+        estado: true,
+        mensaje: "Datos editados completamente",
+        docs: docs,
+      });
+    }
+  });
+});
 // EXPORTANDO AL MODULO PARA UTILIZANDOR EN OTRO DOCUMENTO
 module.exports = {
   routerModificar,
