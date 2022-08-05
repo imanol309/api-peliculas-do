@@ -66,6 +66,13 @@ routerVer.get("/genero/:nombre", async (req, res) => {
     .catch((error) => res.json({ message: error }));
 });
 
+routerVer.get("/type/:nombre", async (req, res) => {
+  const type = req.params.nombre;
+  await Peliculas.find({ type: type })
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+});
+
 // DONDE EXPORTO LAS PELICULAS
 module.exports = {
   routerVer,

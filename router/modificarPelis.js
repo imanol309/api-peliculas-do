@@ -135,6 +135,7 @@ routerModificar.patch("/masVistas/patch/:id", isAuthSecret, (req, res) => {
   );
 });
 
+// EDITANDO UN CAMPO DE TODA LA BASE DE DATOS COMPLETA
 routerModificar.put("/modificarTodoBD", isAuthSecret, async (req, res) => {
   const bodyType = req.body.type;
   await Peliculas.updateMany({}, { type: bodyType }, function (err, docs) {
@@ -154,25 +155,33 @@ routerModificar.put("/modificarTodoBD", isAuthSecret, async (req, res) => {
   });
 });
 
-
-routerModificar.put("/modificarTodoBD/masVistas", isAuthSecret, async (req, res) => {
-  const bodyType = req.body.type;
-  await PeliculasMVistas.updateMany({}, { type: bodyType }, function (err, docs) {
-    if (err) {
-      res.json({
-        estado: false,
-        mensaje: "Datos no se pudieron editar",
-        error: err,
-      });
-    } else {
-      res.json({
-        estado: true,
-        mensaje: "Datos editados completamente",
-        docs: docs,
-      });
-    }
-  });
-});
+// EDITANDO UN CAMPO DE TODA LA BASE DE DATOS COMPLETA DE LAS PELICULAS MAS VISTAS
+routerModificar.put(
+  "/modificarTodoBD/masVistas",
+  isAuthSecret,
+  async (req, res) => {
+    const bodyType = req.body.type;
+    await PeliculasMVistas.updateMany(
+      {},
+      { type: bodyType },
+      function (err, docs) {
+        if (err) {
+          res.json({
+            estado: false,
+            mensaje: "Datos no se pudieron editar",
+            error: err,
+          });
+        } else {
+          res.json({
+            estado: true,
+            mensaje: "Datos editados completamente",
+            docs: docs,
+          });
+        }
+      }
+    );
+  }
+);
 // EXPORTANDO AL MODULO PARA UTILIZANDOR EN OTRO DOCUMENTO
 module.exports = {
   routerModificar,
