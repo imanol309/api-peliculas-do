@@ -55,9 +55,27 @@ const userSchema = Schema({
 
 // Estructura de como se van introducir los datos de las peliculas mas vistas
 const filmMoreSchema = new Schema({
-  filmSchema,
   _id: { type: String },
+  titulo: { type: String },
+  genero: String,
+  Director: String,
+  year: Date,
+  Reparto: { type: String },
+  img: { type: String },
+  video: { type: String },
+  time: String,
+  descripcion: { type: String },
+  type: { type: String },
   recaudacion: { type: String },
+  comments: [
+    {
+      emailUser: { type: String },
+      name: String,
+      logo: { type: String },
+      signupDate: { type: Date, default: Date.now() },
+      message: { type: String },
+    },
+  ],
 });
 
 // crear el modelo
