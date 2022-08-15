@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Extructura de como se van a introducir los datos en peliculas
-const peliculaSchema = new Schema({
+const filmSchema = new Schema({
   titulo: { type: String },
   genero: String,
   Director: String,
@@ -54,36 +54,15 @@ const userSchema = Schema({
 });
 
 // Estructura de como se van introducir los datos de las peliculas mas vistas
-const peliculaVistasSchema = new Schema({
+const filmMoreSchema = new Schema({
+  filmSchema,
   _id: { type: String },
-  titulo: { type: String },
-  genero: String,
-  Director: String,
-  year: Date,
-  Reparto: { type: String },
-  img: { type: String },
-  video: { type: String },
-  time: String,
-  descripcion: { type: String },
   recaudacion: { type: String },
-  type: { type: String },
-  comments: [
-    {
-      emailUser: { type: String },
-      name: String,
-      logo: { type: String },
-      signupDate: { type: Date, default: Date.now() },
-      message: { type: String },
-    },
-  ],
 });
 
 // crear el modelo
-const Peliculas = mongoose.model("peliculasmarvels", peliculaSchema);
-const PeliculasMVistas = mongoose.model(
-  "masvistasmarvels",
-  peliculaVistasSchema
-);
+const Peliculas = mongoose.model("peliculasmarvels", filmSchema);
+const PeliculasMVistas = mongoose.model("masvistasmarvels", filmMoreSchema);
 const UserNew = mongoose.model("userdominicanos", userSchema);
 
 module.exports = {

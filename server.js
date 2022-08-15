@@ -1,11 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const morgan =  require("morgan")
+const morgan = require("morgan");
 const app = express();
-const { routerVer } = require("./router/verPelis");
-const { routerModificar } = require("./router/modificarPelis");
-const { routerCrear } = require("./router/crearPelis");
-const { routerDelete } = require("./router/eliminarPelis");
+const { getData } = require("./router/getData");
+const { updateData } = require("./router/updateData");
+const { postData } = require("./router/postData");
+const { deleteData } = require("./router/deleteData");
 const {
   signUp,
   signIn,
@@ -19,14 +19,14 @@ const {
 const bodyParser = require("body-parser");
 const RateLimit = require("express-rate-limit");
 require("dotenv").config();
-const { isAuth, isAuthSecret } = require("./middlewares/auth");
+const { isAuthSecret } = require("./middlewares/auth");
 const cors = require("cors");
 
 // using the cors package to be able to configure who can make requests for this api
 app.use(cors());
 
 // Usando morgan para ver todas peticiones que hace mi servidor
-app.use(morgan('dev'))
+app.use(morgan("dev"));
 
 // set up rate limiter: maximum of five requests per minute
 var limiter = RateLimit({
@@ -46,23 +46,23 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log(`base de datos conectada`))
-  .catch((e) => console.log(`error en la base de datos`, e));
+  .then(() => console.log(`connected database`))
+  .catch((error) => console.log(`database connection error`, error));
 
-// Carpeta estatica para ver la pagina principal 
+// Carpeta estatica para ver la pagina principal
 app.use(express.static(__dirname + `/public`));
 
 // llamando ruta de ver la informacion de la pelicula
-app.use("/api/verPelis", routerVer);
+app.use("/api/verPelis", getData);
 
 // llamando ruta de agregar nuevas peliculas
-app.use("/api/crearPelis", routerCrear);
+app.use("/api/crearPelis", postData);
 
 // llamando ruta de eliminar peliculas
-app.use("/api/eliminarPelis", routerDelete, limiter);
+app.use("/api/eliminarPelis", deleteData, limiter);
 
 // llamado ruta de modificar peliculas
-app.use("/api/modificarPelis", routerModificar);
+app.use("/api/modificarPelis", updateData);
 
 // LOS ENDPOINT para los usuarios logeados
 
@@ -97,7 +97,5 @@ app.use((req, res, next) => {
 
 // Activar servidor web
 app.listen(process.env.PORT || 3000, () => {
-  console.log(
-    `Servidor puesto en servicio en la puerto ${process.env.PORT || 3000}`
-  );
+  console.log(`Server activated on the port ${process.env.PORT || 3000}`);
 });

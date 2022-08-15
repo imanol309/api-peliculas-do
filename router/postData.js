@@ -1,10 +1,10 @@
 const express = require("express");
-const routerCrear = express.Router();
+const postData = express.Router();
 const { Peliculas, PeliculasMVistas } = require("../models/EstructuraDeBD");
 const { isAuthSecret } = require("../middlewares/auth");
 
 // RUTA PARA CREAR PELICULAS EN LA BASE DE DATOS
-routerCrear.post("/", isAuthSecret, async (req, res) => {
+postData.post("/", isAuthSecret, async (req, res) => {
   const body = req.body;
   try {
     const mascotaDB = new Peliculas(body);
@@ -16,7 +16,7 @@ routerCrear.post("/", isAuthSecret, async (req, res) => {
 });
 
 // RUTA PARA CREAR PELICULAS EN LA BASE DE DATOS DE LAS MAS VISTAS LISTA.
-routerCrear.post("/masVistas", isAuthSecret, async (req, res) => {
+postData.post("/masVistas", isAuthSecret, async (req, res) => {
   const body = req.body;
   try {
     const mascotaDB = new PeliculasMVistas(body);
@@ -28,5 +28,5 @@ routerCrear.post("/masVistas", isAuthSecret, async (req, res) => {
 });
 
 module.exports = {
-  routerCrear,
+  postData,
 };
