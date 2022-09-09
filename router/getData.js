@@ -6,14 +6,20 @@ const { Peliculas, PeliculasMVistas } = require("../models/EstructuraDeBD");
 
 // RUTA PARA VER TODAS LAS PELICULAS
 getData.get(`/`, (req, res) => {
+  const { limit } = req.query;
+  const limitNumber = Number(limit);
   Peliculas.find()
+    .limit(limitNumber)
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
 
 // RUTA PARA VER TODAS LAS PELICULAS MAS VISTAS
 getData.get(`/masVistas`, (req, res) => {
+  const { limit } = req.query;
+  const limitNumber = Number(limit);
   PeliculasMVistas.find()
+    .limit(limitNumber)
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
