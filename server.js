@@ -41,6 +41,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // conectar con una base de datos con mongoDB
+mongoose.set('useCreateIndex', true)
 mongoose
   .connect(process.env.URI, {
     useNewUrlParser: true,
